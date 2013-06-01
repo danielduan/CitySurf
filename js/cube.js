@@ -42,6 +42,8 @@ if ((/MSIE/).test(navigator.userAgent)) {
 
 //initialize
 
+var geometry;
+
 function init() {
     ini = true;
 
@@ -128,9 +130,7 @@ function init() {
 
     //plane
 
-    geometry = new THREE.CylinderGeometry(3, 0.01, 0.7, 1.2, 1, false);
-
-    console.log(geometry.radiusBottom);
+    //geometry = new THREE.CylinderGeometry(3, 0.01, 0.7, 1.2, 1, false);
 
     planeMaterial = [
         new THREE.MeshBasicMaterial({
@@ -144,7 +144,7 @@ function init() {
                 wireframe: true
             })
     ]
-    plane3D = new THREE.Mesh(geometry, planeMaterial);
+    plane3D = new THREE.Mesh(new THREE.CylinderGeometry(3, 0.01, 0.7, 1.2, 1, false), planeMaterial);
     scene.addObject(plane3D);
     plane3D.type = "plane"
     plane3D.position.set(0, 0, 300);
