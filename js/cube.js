@@ -37,58 +37,7 @@ if ((/MSIE/).test(navigator.userAgent)) {
     console.log = function () {}
 }
 
-//Some funtions
 
-function decToHex(number) {
-    if (number < 0) {
-        number = 0xFFFFFFFF + number + 1;
-    }
-
-    return number.toString(16).toUpperCase();
-}
-
-function getFPS(stats) {
-    var FPS = null
-    try {
-        FPS = stats.domElement.innerText.match(/.*(?= FPS)/);
-    } catch (err) {
-        FPS = stats.domElement.textContent.match(/.*(?= FPS)/);
-    }
-    if (FPS) {
-        return FPS[0]
-    } else {
-        return undefined
-    }
-}
-
-function createBlocker(txt) {
-    var ele = gameBlocker;
-    $("#container").append(ele);
-    $(ele).html("");
-    $(ele).css({
-            "display": "block"
-        })
-    $(ele).css({
-            "width": "100%",
-            "height": "100%",
-            "margin": 0,
-            "padding": 0,
-            "font-size": "50px",
-            "position": "absolute",
-            "top": 0,
-            "left": 0,
-            "text-shadow": "0px 3px 3px rgba(170,170,170,.7)"
-        })
-    $(ele).html("<tbody><tr><td align='center' valign='middle' style='width:" + $("#container").width() + "px;height:" + $("#container").height() + "px'>" + txt + "</td></tr></tbody>");
-}
-
-function removeBlocker() {
-    var ele = gameBlocker;
-    $(ele).html("");
-    $(ele).css({
-            "display": "none"
-        })
-}
 
 
 //initialize
@@ -178,12 +127,6 @@ function init() {
     $container[0].style.width = WIDTH + "px"
 
     //plane
-    /*var plane=document.createElement("img")
-    plane.src="images/plane.png"
-    plane.style.position="absolute";
-    plane.style.bottom="0px";
-    plane.style.left=WIDTH/2-21+"px";
-    $container.append(plane);*/
 
     geometry = new THREE.CylinderGeometry(3, 0.01, 0.7, 1.2);
     planeMaterial = [
@@ -209,19 +152,6 @@ function init() {
     //make boxes
     for (i = 0; i < cubeNum; i++) {
         addBox();
-        /*
-      var material = new THREE.MeshLambertMaterial({
-    color: eval("0x"+Math.floor(Math.random()*16777215).toString(16)),
-  });
-  
-
-  var box=new THREE.Mesh( new THREE.CubeGeometry( 10, 10, 10 ), new THREE.MeshNormalMaterial() material );
-  box.position.set(Math.random()*140-70,0,Math.random()*300-150)
-  box.position.oriX=box.position.x;
-  box.type="box";
-  scene.addObject(box);
-
-  */
     }
 
     var light = new THREE.PointLight(0xFFFFFF);
@@ -234,7 +164,6 @@ function init() {
     light2.position.x = 0;
     light2.position.y = 10;
     light2.position.z = 289;
-    //scene.addLight(light2);
 
     scene.fog = new THREE.Fog(0xF0DE82, 100, 300)
 
@@ -335,7 +264,6 @@ function drawAni() {
             //}
         }
     }
-    //offsetX=0;
 
     drawMoreBox();
 
@@ -658,32 +586,6 @@ function loadin() {
     $("body").keydown(function (event) {
             keyPressed = event.keyCode
             switch (event.keyCode) {
-                /*case 39:
-      //offsetX-=5;
-      $({
-        number: offsetX
-      }).animate({
-        number: offsetX-5
-      }, {
-        duration: 100,
-        step: function(result) {
-          offsetX=result;
-        }
-      })
-      break;*/
-                /*case 37:
-      //offsetX+=5;
-      $({
-        number: offsetX
-      }).animate({
-        number: offsetX+5
-      }, {
-        duration: 100,
-        step: function(result) {
-          offsetX=result;
-        }
-      })
-      break;*/
             case 13: //Enter
                 if (ini == false) {
                     resetGame();
@@ -706,31 +608,6 @@ function loadin() {
                     return false
                 }
                 break;
-                /*case 65: //A
-      //offsetX+=5;
-      $({
-        number: offsetX
-      }).animate({
-        number: offsetX+5
-      }, {
-        duration: 100,
-        step: function(result) {
-          offsetX=result;
-        }
-      })
-      break;*/
-                /*case 68: //D
-      $({
-        number: offsetX
-      }).animate({
-        number: offsetX-5
-      }, {
-        duration: 100,
-        step: function(result) {
-          offsetX=result;
-        }
-      })
-      break*/
             case 83: //S
                 $(stats.domElement).toggleClass("hide");
                 break;
