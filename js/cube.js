@@ -128,7 +128,10 @@ function init() {
 
     //plane
 
-    geometry = new THREE.CylinderGeometry(3, 0.01, 0.7, 1.2);
+    geometry = new THREE.CylinderGeometry(3, 0.01, 0.7, 1.2, 1, false);
+
+    console.log(geometry.radiusBottom);
+
     planeMaterial = [
         new THREE.MeshBasicMaterial({
                 color: 0xFFA500,
