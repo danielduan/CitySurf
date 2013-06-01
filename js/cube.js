@@ -143,8 +143,20 @@ function init() {
                 shading: THREE.FlatShading,
                 wireframe: true
             })
-    ]
-    plane3D = new THREE.Mesh(new THREE.CylinderGeometry(3, 0.01, 0.7, 1.2, 1, false), planeMaterial);
+    ];
+
+    plane3D = new THREE.Mesh(
+      new THREE.CylinderGeometry(3, 0.01, 0.7, 1.2, 1, false),
+      new THREE.MeshBasicMaterial({
+                color: 0xFFA500,
+                shading: THREE.FlatShading,
+                wireframe: false
+            }),
+        new THREE.MeshBasicMaterial({
+                color: 0x000000,
+                shading: THREE.FlatShading,
+                wireframe: true
+            }));
     scene.addObject(plane3D);
     plane3D.type = "plane"
     plane3D.position.set(0, 0, 300);
