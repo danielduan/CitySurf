@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="js/Three.min.js"></script>
         <script type="text/javascript" src="js/RequestAnimationFrame.js"></script>
         <script type="text/javascript" src="js/Stats.min.js"></script>
+        <script type="text/javascript" src="js/Detector.js"></script>
         <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
 	       <script type="text/javascript" src="js/cube.js"></script>
