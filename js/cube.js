@@ -114,7 +114,7 @@ function init() {
     //Create a group
     whole = new THREE.Object3D();
 
-    scene.addObject(whole);
+    scene.add(whole);
 
 
     // start the renderer
@@ -147,7 +147,6 @@ function init() {
     plane3D.position.set(0, 0, 300);
     plane3D.rotation.x = 0.14;
     plane3D.scale.y = 0.3;
-
 
     //make boxes
     for (i = 0; i < cubeNum; i++) {
