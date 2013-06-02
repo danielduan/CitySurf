@@ -113,7 +113,8 @@
 
      
             mvPushMatrix();
-            mat4.scale(mv,[14,0.01,60]);
+            
+            mat4.scale(mv,[7.3,0.01,60]);
             gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
             gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 

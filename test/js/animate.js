@@ -31,6 +31,8 @@ function animate() {
             drawScene();
             animate();
         }
+
+        document.getElementById("points").innerHTML=Math.ceil(zcount);
     }
 
 function map() {
@@ -57,7 +59,7 @@ function map() {
     dataType: 'jsonp', // Pay attention to the dataType/contentType
     success: function (data ) {
             var total = data.resourceSets[0].estimatedTotal;
-                difficulty = total * 40;
+                difficulty = total * 30;
     }
     });
     document.getElementById("mapimage").src = maps[ind].src;
