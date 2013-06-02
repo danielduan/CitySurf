@@ -14,7 +14,7 @@
         texture[1].image.onload = function () {
             handleLoadedTexture(texture[1]);
         }
-        texture[1].image.src = "tron.gif";
+        texture[1].image.src = "layer.png";
     }
 
     function handleLoadedTexture(textures) {
