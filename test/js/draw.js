@@ -60,7 +60,7 @@
             wave+= 1;
             refillXZ();
             zbottom += 100;
-            //mph += .1;
+            mph += .02;
         }
     }   
 
