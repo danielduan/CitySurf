@@ -166,14 +166,15 @@
 
         document.onkeydown = handleKeyDown;
         document.onkeyup = handleKeyUp;
-
+        document.getElementById("mapimage").width=window.innerWidth/10;
+        
         document.getElementById("play_button").addEventListener('click', function(event) {
         event.preventDefault();
         pushRestart();
         loadmusic();
         pause = false;
         });
-        document.getElementById("mapimage").width=window.innerWidth/10;
+        
 
         tick();
     }

@@ -60,7 +60,10 @@ function map() {
     dataType: 'jsonp', // Pay attention to the dataType/contentType
     success: function (data ) {
             total = data.resourceSets[0].estimatedTotal;
-                difficulty = total * 30;
+                if (total == 0)
+                    difficulty = 30;
+                else
+                    difficulty = total * 30;
     }
     });
     document.getElementById("mapimage").src = maps[ind].src;
