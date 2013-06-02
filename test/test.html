@@ -22,8 +22,12 @@
     uniform sampler2D uSampler;
 
     void main(void) {
-        gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
-    }
+        vec4 textureColor = texture2D(uSampler, vTextureCoord);
+          if (textureColor.a < 0.5) 
+            discard;
+          else
+            gl_FragColor = vec4(textureColor.rgb, textureColor.a);
+            }
 </script>
 
 <script id="shader-vs" type="x-shader/x-vertex">

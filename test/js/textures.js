@@ -8,7 +8,7 @@
         crateImage.onload = function () {
             handleLoadedTexture(crateTextures);
         }
-        crateImage.src = "crate.gif";
+        crateImage.src = "tron.png";
     }
 
     function handleLoadedTexture(textures) {
