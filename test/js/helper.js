@@ -54,7 +54,7 @@
 
                 godmode = false;
 
-                pause = false;
+                pause = true;
                 zGreatest = 0;
                 rPyramid = 0;
                 rCube = 0;
@@ -81,13 +81,14 @@
                 mph = .1;
                 filter = 0;
 
+                score = 0;
+
                 draw = 1;
                 alive = true; 
                 // Used to make us "jog" up and down as we move forward.
                 joggingAngle = 0;
                 lastTime = 0;
                 fillXZ();
-                refillXZ();
         }
     }
 
