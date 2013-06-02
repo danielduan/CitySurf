@@ -92,4 +92,5 @@ padding:12px;
 #map {
 	position:absolute;
 	z-index:-1;
+	display:none;
 }

@@ -174,7 +174,12 @@
     {};
 
     function isDead()
-    {};
+    {
+        document.getElementById("menu").style.display = "block";
+        document.getElementById("points").style.display = "none";
+        document.getElementById("map").style.display = "none";
+        document.getElementById("play_button").innerHTML = "Restart";
+    };
 
     function inGodMode()
     {};
@@ -183,6 +188,7 @@
     {
         document.getElementById("menu").style.display = "none";
         document.getElementById("points").style.display = "block";
+        document.getElementById("map").style.display = "block";
     };
 
 </script>
