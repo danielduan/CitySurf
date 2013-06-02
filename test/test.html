@@ -20,29 +20,47 @@
     precision mediump float;
     varying vec2 vTextureCoord;
     uniform sampler2D uSampler;
+    varying vec3 vLightWeighting;
 
     void main(void) {
         vec4 textureColor = texture2D(uSampler, vTextureCoord);
           if (textureColor.a < 0.5) 
             discard;
           else
-            gl_FragColor = vec4(textureColor.rgb, textureColor.a);
+            gl_FragColor = vec4(textureColor.rgb * vLightWeighting, textureColor.a);
             }
 </script>
 
 <script id="shader-vs" type="x-shader/x-vertex">
     attribute vec3 aVertexPosition;
+    attribute vec3 aVertexNormal;
     attribute vec2 aTextureCoord;
 
     uniform mat4 uMVMatrix;
     uniform mat4 uPMatrix;
+    uniform mat3 uNMatrix;
+
+    uniform vec3 uAmbientColor;
+
+    uniform vec3 uLightingDirection;
+    uniform vec3 uDirectionalColor;
+
+    uniform bool uUseLighting;
 
     varying vec2 vTextureCoord;
-
+    varying vec3 vLightWeighting;
 
     void main(void) {
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
         vTextureCoord = aTextureCoord;
+
+        if (!uUseLighting) {
+            vLightWeighting = vec3(1.0, 1.0, 1.0);
+        } else {
+            vec3 transformedNormal = uNMatrix * aVertexNormal;
+            float directionalLightWeighting = max(dot(transformedNormal, uLightingDirection), 0.0);
+            vLightWeighting = uAmbientColor + uDirectionalColor * directionalLightWeighting;
+        }
     }
 </script>
 
@@ -52,15 +70,16 @@
     var gl;
     var numCubes;
     var shaderProgram;
-    var crateTextures = Array();
+    var texture;
     var mvMatrix = mat4.create();
     mat4.identity(mvMatrix);
     var mvMatrixStack = [];
     var pMatrix = mat4.create();
 
     var cubeVertexPositionBuffer;
-     var cubeVertexTextureCoordBuffer;
+    var cubeVertexTextureCoordBuffer;
     var cubeVertexIndexBuffer;
+    var cubeVertexNormalBuffer;
 
 
     var currentlyPressedKeys = {};
@@ -84,11 +103,23 @@
     var wave = 0;
     var zcount = 0;
 
+    var ambientR = 1.0;
+    var ambientG = 1.0;
+    var ambientB = 1.0;
+
+    var lightDirectionX = 0.0;
+    var lightDirectionY = 10.0;
+    var lightDirectionZ = 0.0;
+
+    var directionR = 0.8;
+    var directionG = 0.8;
+    var directionB = 0.8;
+
 
     var zcount = 0;
     var zbottom = 0;
 
-    var mph = .25;
+    var mph = .1;
     var filter = 0;
 
     var draw = 1;
