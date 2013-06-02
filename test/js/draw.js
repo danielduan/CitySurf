@@ -177,7 +177,7 @@
      
         setMatrixUniforms();
         gl.drawArrays(gl.TRIANGLES, 0, pyramidVertexPositionBuffer.numItems);
-     
+        
         //mvPopMatrix();
     }
 

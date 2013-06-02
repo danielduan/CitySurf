@@ -1,0 +1,24 @@
+#music {
+	border: none;
+	position:absolute;
+	z-index:-3;
+}
+
+#cube-runner {
+	border: none;
+	position:absolute;
+	z-index:-2;
+}
+
+#mapimage {
+	margin-top:10px;
+	margin-left:10px;
+	border: 1px solid #ddd;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+
+.map {
+	position:absolute;
+	z-index:-1;
+}

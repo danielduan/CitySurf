@@ -3,6 +3,7 @@
 <head>
 <title>Cube Runner</title>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
 <script type="text/javascript" src="webgl-utils.js"></script>
@@ -164,12 +165,13 @@
 
 
 <body style="background-color:black" onload="webGLStart();initAudio();">
-<div id="map" style="position:absolute; z-index:-1"><img src="00.png" id="mapimage" width="100px" style="margin-top:10px;margin-left:10px;border: 1px solid #ddd; opacity:0.5;
-filter:alpha(opacity=50);"></div>
+<div id="map">
+    <img src="00.png" id="mapimage" width="100px" >
+</div>
 <!--<img id="map" src="http://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=200x200&sensor=false&key=AIzaSyAfC_GeRTdvQEtBBbuf-6ZX6z8OwDd4mig" style="position:absolute; z-index:-1">-->
-    <canvas id="cube-runner" style="border: none; position:absolute; z-index:-2;"></canvas>
+    <canvas id="cube-runner"></canvas>
 
-    <canvas id="music" style="border: none; position:absolute; z-index:-3;"></canvas>
+    <canvas id="music"></canvas>
 </body>
 
 
