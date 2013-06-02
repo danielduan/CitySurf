@@ -47,14 +47,6 @@ function initBuffers() {
     pyramidVertexColorBuffer.itemSize = 4;
     pyramidVertexColorBuffer.numItems = 12;
 
-        planeVertexPositionBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
-        vertices = [
-            -1000.0, -1000.0,  1000.0,
-             1000.0, -1000.0,  1000.0,
-             1000.0,  1000.0,  1000.0,
-            -1000.0,  1000.0,  1000.0,
-            ];
         cubeVertexPositionBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
         vertices = [

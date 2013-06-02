@@ -43,6 +43,9 @@
             gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
             gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
+            gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
+            gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, cubeVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
+
             gl.activeTexture(gl.TEXTURE0);
             gl.bindTexture(gl.TEXTURE_2D, crateTextures[filter]);
             gl.uniform1i(shaderProgram.samplerUniform, 0);
