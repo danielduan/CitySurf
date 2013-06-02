@@ -163,8 +163,9 @@
 </head>
 
 
-<body style="background-color:white" onload="webGLStart();initAudio();">
-<div id="map" style="position:absolute; z-index:-1"><img src="00.png" style="margin-top:10px;margin-left:10px;border: 1px solid #ddd;"></div>
+<body style="background-color:black" onload="webGLStart();initAudio();">
+<div id="map" style="position:absolute; z-index:-1"><img src="00.png" id="mapimage" width="100px" style="margin-top:10px;margin-left:10px;border: 1px solid #ddd; opacity:0.5;
+filter:alpha(opacity=50);"></div>
 <!--<img id="map" src="http://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=200x200&sensor=false&key=AIzaSyAfC_GeRTdvQEtBBbuf-6ZX6z8OwDd4mig" style="position:absolute; z-index:-1">-->
     <canvas id="cube-runner" style="border: none; position:absolute; z-index:-2;"></canvas>
 
