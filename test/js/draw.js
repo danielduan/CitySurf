@@ -35,8 +35,12 @@
             if (godmode == false)
             {
                 if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] + 1) * (Z[i] + 1)) <= (.2+extra) && zPos >= Z[i])
+                {
                     pause = !pause;
+                    alive = false;
+                }
             }
+            
             if(xPos < -7)
                 xPos = -6.8;
             if(xPos > 7)
