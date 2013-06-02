@@ -199,5 +199,5 @@
             drawPyramid(mvMatrix);
         }
 
-        //drawPlane(mvMatrix);
+        drawPlane(mvMatrix);
     }
