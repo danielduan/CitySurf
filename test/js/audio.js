@@ -40,7 +40,12 @@ function initAudio() {
     jsProcessor.connect(context.destination);
 
     // Load the sample buffer for the audio source
-    loadSample("greyhound.m4a");
+    //loadSample("greyhound.m4a");
+}
+
+function loadmusic(){
+	// Load the sample buffer for the audio source
+	loadSample("greyhound.m4a");
 }
 
 // #####################
