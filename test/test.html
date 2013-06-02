@@ -158,6 +158,11 @@
         document.onkeydown = handleKeyDown;
         document.onkeyup = handleKeyUp;
 
+        document.getElementById("play_button").addEventListener('click', function(event) {
+        event.preventDefault();
+        pushRestart();
+        });
+
         tick();
     }
     
@@ -171,7 +176,9 @@
     {};
 
     function pushRestart()
-    {};
+    {
+        document.getElementById("menu").style.display = "none";
+    };
 
 </script>
 
@@ -186,11 +193,12 @@
 </div>
 
     <div id="menu">
-        <h1>Three.js Tetris</h1>
+        <h1>CitySurf</h1>
     <p>
       Movement: left and right arrows<br>
-      Pause/resume: space<br>
-      Author: Ben Lin, Daniel Duan, and Elison Chen</a>
+      Pause/Resume: space<br>
+      Made by Ben Lin, Daniel Duan, <br>and Elison Chen
+      during <a href="http://boyleheightshack.eventbrite.com/">Hack for LA</a>.
     </p>
         <button id="play_button">Play</button>
     </div>
