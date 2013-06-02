@@ -94,13 +94,16 @@
     var yPos = 0.4;
     var zPos = 0;
     var speed = 0;
+    var score = 0;
 
-    var pause = false;
+    var pause = true;
     var zGreatest = 0;
     var rPyramid = 0;
     var rCube = 0;
     var X = new Array();
     var Z = new Array();
+    var locationX = new Array();
+    var locationY = new Array();
     var wave = 0;
     var zcount = 0;
 
@@ -165,12 +168,13 @@
 
 
 <body style="background-color:black" onload="webGLStart();initAudio();">
+
 <div id="map">
     <img src="00.png" id="mapimage" width="100px" >
 </div>
 <!--<img id="map" src="http://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=200x200&sensor=false&key=AIzaSyAfC_GeRTdvQEtBBbuf-6ZX6z8OwDd4mig" style="position:absolute; z-index:-1">-->
     <canvas id="cube-runner"></canvas>
-
+    
     <canvas id="music"></canvas>
 </body>
 
