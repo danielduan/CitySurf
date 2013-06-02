@@ -327,12 +327,12 @@
 
         if (currentlyPressedKeys[37] || currentlyPressedKeys[65]) {
             // left arrow
-            yawRate = 50;
-            speed = 0.003;
+                yawRate = 50;
+                speed = 0.003;
         } else if (currentlyPressedKeys[39] || currentlyPressedKeys[68]) {
             // right arrow
-            yawRate = -50;
-            speed = -0.003;
+                yawRate = -50;
+                speed = -0.003;
         } else {
             speed = 0;
         }
@@ -388,13 +388,19 @@
     var zcount = 0;
     var zbottom = 0;
 
+    var mph = .25;
+
     function drawCubes(mv) {
         for (var i = zbottom; i < zbottom + 2000; i++)
         {
             mat4.identity(mv);
-            Z[i] += .25;
-            if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] - zPos) * (Z[i] - zPos)) <= 1)
+            Z[i] += mph;
+            if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] - zPos) * (Z[i] - zPos)) <= .25 && zPos >= Z[i])
                 pause = !pause;
+            if(xPos < -29.5)
+                xPos = -29.5;
+            if(xPos > 29.5)
+                xPos = 29.5;
             mat4.translate(mv, [X[i]-xPos, -.4, Z[i]]);
             mvPushMatrix();
             mat4.scale(mv,[.3,.3,.3]);
@@ -408,9 +414,12 @@
             setMatrixUniforms();
             gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
         }
-        zcount+=.25;
+        zcount += mph;
         if(zcount % 1100 == 0)
+        {
             zbottom += 1000;
+            mph += .1;
+        }
     }   
 
     function drawPyramid(mv) {
@@ -463,9 +472,6 @@
         var timeNow = new Date().getTime();
         if (lastTime != 0) {
             var elapsed = timeNow - lastTime;
-            console.log(wave);
-            //console.log(zGreatest);
-            console.log(zcount);
 
             if (speed != 0) {
                 xPos -= /*Math.sin(degToRad(yaw))*/  speed * elapsed;
@@ -502,7 +508,6 @@
         fillXZ();
         gl.clearColor(0.0, 0.0, 0.0, 1.0);
         gl.enable(gl.DEPTH_TEST);
-
 
         document.onkeydown = handleKeyDown;
         document.onkeyup = handleKeyUp;
