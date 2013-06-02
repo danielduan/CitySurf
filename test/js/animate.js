@@ -59,7 +59,7 @@ function map() {
     jsonp: "jsonp",
     dataType: 'jsonp', // Pay attention to the dataType/contentType
     success: function (data ) {
-            var total = data.resourceSets[0].estimatedTotal;
+            total = data.resourceSets[0].estimatedTotal;
                 difficulty = total * 30;
     }
     });
