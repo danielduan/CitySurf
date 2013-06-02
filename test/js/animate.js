@@ -35,7 +35,6 @@ function animate() {
 
 function map() {
     var ind = Math.floor(zcount / 10);
-    var source = "<img src=\"" + maps[ind].src + "\" style=\"margin-top:10px;margin-left:10px;border: 1px solid #ddd;\">";
-    console.log(source);
-    document.getElementById("map").innerHTML = source;
+    
+    document.getElementById("mapimage").src = maps[ind].src;
 }
