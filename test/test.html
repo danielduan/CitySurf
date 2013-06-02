@@ -323,11 +323,11 @@
 
         if (currentlyPressedKeys[37] || currentlyPressedKeys[65]) {
             // left arrow
-            yawRate = .1;
+            yawRate = 50;
             speed = 0.003;
         } else if (currentlyPressedKeys[39] || currentlyPressedKeys[68]) {
             // right arrow
-            yawRate = -.1;
+            yawRate = -50;
             speed = -0.003;
         } else {
             speed = 0;
@@ -408,11 +408,12 @@
     function drawPyramid(mv) {
         mat4.identity(mv);
  
-        mat4.translate(mv, [0.0, 0.0, -0.5]);
+        mat4.translate(mv, [0.0, -0.4, -1]);
      
         mvPushMatrix();
-        mat4.scale(mv,[.2,.2,.2]);
-        //mvRotate(rPyramid, [1, 1, 0]);
+        mat4.scale(mv,[.1,.1,.1]);
+        mat4.rotate(mvMatrix, degToRad(90), [1, 0, 0]);
+        mat4.rotate(mvMatrix, degToRad(Math.sin(yawRate)), [1,0,0]);
      
         gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, pyramidVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
