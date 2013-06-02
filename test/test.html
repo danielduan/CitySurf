@@ -167,7 +167,7 @@
         document.onkeydown = handleKeyDown;
         document.onkeyup = handleKeyUp;
         document.getElementById("mapimage").width=window.innerWidth/10;
-        
+
         document.getElementById("play_button").addEventListener('click', function(event) {
         event.preventDefault();
         pushRestart();
@@ -259,6 +259,7 @@
         document.getElementById("menu").style.display = "none";
         document.getElementById("points").style.display = "block";
         document.getElementById("map").style.display = "block";
+        document.getElementById("mapimage").width=window.innerWidth/10;
     };
 
 </script>

@@ -63,7 +63,7 @@ function map() {
                 if (total == 0)
                     difficulty = 30;
                 else
-                    difficulty = total * 30;
+                    difficulty = total * 20;
     }
     });
     document.getElementById("mapimage").src = maps[ind].src;
