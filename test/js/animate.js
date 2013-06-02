@@ -37,16 +37,5 @@ function map() {
     var ind = Math.floor(zcount / 10);
     document.getElementById("mapimage").src = maps[ind].src;
 
-  var msdnAPI = "http://dev.virtualearth.net/REST/v1/Traffic/Incidents/37,-105,45,-94?";
-  $.getJSON( msdnAPI, {
-    key: "ApDsB3Y0HgxN1AJaupkRmQ0o8m-QNQWUrwDxX4hE9NjKM3JO1dd_-MgRDftB5ZmX"
-  })
-  .done(function( data ) {
-    $.each( data.items, function( i, item ) {
-        var total = item.resourceSets.estimatedTotal;
-        console.log(total);
-      //$( "<img/>" ).attr( "src", item.media.m ).appendTo( "#map" );
-    });
-  });
-
+  
 }
