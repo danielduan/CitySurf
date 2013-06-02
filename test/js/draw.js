@@ -110,7 +110,7 @@
         mat4.identity(mv);
  
 
-        mat4.translate(mv, [-xPos, -.4, 0]);
+        mat4.translate(mv, [-xPos, -1, 0]);
      
             mvPushMatrix();
             mat4.scale(mv,[14,0.01,10]);
