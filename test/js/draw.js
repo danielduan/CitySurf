@@ -1,39 +1,23 @@
     //Randomly generate coordinates (X and Z) for cubes
     function fillXZ(){
-        for(var i = 1000 * wave; i < 1000 * wave + 1000; i++)
+        for(var i = 30; i < 60; i++)
         {
-            var num1 = Math.random() * 60 - 30;  
-            var num2 = -Math.random() * 300 ;
+            var num1 = Math.random() * 14 - 7;  
+            var num2 = -Math.random() * 30;
             while(num2 > -10)
-                num2 = -Math.random() * 300 ;
+              num2 = -Math.random() * 30;
             X[i] = num1;
             Z[i] = num2;
         }
-        for(var i = 1000; i < 2000; i++)
+    }
+
+    function refillXZ(){
+        X.splice(0, 30);
+        Z.splice(0, 30);
+        for(var i = 30; i < 60; i++)
         {
-            var num1 = Math.random() * 60 - 30;  
-            var num2 = -Math.random() * 300 - 300;
-            X[i] = num1;
-            Z[i] = num2;
-        }
-        for(var i = 2000; i < 3000; i++)
-        {
-            var num1 = Math.random() * 60 - 30;  
-            var num2 = -Math.random() * 300 - 600;
-            X[i] = num1;
-            Z[i] = num2;
-        }
-        for(var i = 3000; i < 4000; i++)
-        {
-            var num1 = Math.random() * 60 - 30;   
-            var num2 = -Math.random() * 300 - 900;
-            X[i] = num1;
-            Z[i] = num2;
-        }
-        for(var i = 4000; i < 5000; i++)
-        {
-            var num1 = Math.random() * 60 - 30;   
-            var num2 = -Math.random() * 300 - 1200;
+            var num1 = Math.random() * 14 - 7;  
+            var num2 = -Math.random() * 30 - 30;
             X[i] = num1;
             Z[i] = num2;
         }
@@ -41,7 +25,7 @@
 
     //draw cubes
     function drawCubes(mv) {
-        for (var i = zbottom; i < zbottom + 2000; i++)
+        for (var i = 0; i < 60; i++)
         {
             mat4.identity(mv);
             Z[i] += mph;
@@ -71,10 +55,12 @@
             gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
         }
         zcount += mph;
-        if(zcount % 1100 == 0)
+        if(zcount >= wave * 30 + 15)
         {
-            zbottom += 1000;
-            mph += .1;
+            wave+= 1;
+            refillXZ();
+            zbottom += 100;
+            //mph += .1;
         }
     }   
 

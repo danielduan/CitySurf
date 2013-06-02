@@ -2,6 +2,8 @@
         currentlyPressedKeys[event.keyCode] = true;
         if (event.keyCode == 32)
             pause = !pause;
+        if (event.keyCode == 67)
+            initAudio();
     }
 
 

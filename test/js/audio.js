@@ -40,7 +40,7 @@ function initAudio() {
     jsProcessor.connect(context.destination);
 
     // Load the sample buffer for the audio source
-    loadSample("atmosphere.mp3");
+    loadSample("calling.m4a");
 }
 
 // #####################
