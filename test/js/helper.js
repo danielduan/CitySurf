@@ -31,8 +31,18 @@
             speed = 0;
         }
 
+        if (currentlyPressedKeys[71] || currentlyPressedKeys[103])
+        {
+            //G and g to enter godmode
+            if (godmode == false)
+                godmode = true;
+            else
+                godmode = false;
+        }
+
         if (currentlyPressedKeys[114] || currentlyPressedKeys[82])
         {
+                //R and r to reset
                 pitch = 0;
                 pitchRate = 0;
                 yaw = 0;
@@ -41,6 +51,8 @@
                 yPos = 0.4;
                 zPos = 0;
                 speed = 0;
+
+                godmode = false;
 
                 pause = false;
                 zGreatest = 0;
