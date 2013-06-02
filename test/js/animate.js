@@ -35,6 +35,31 @@ function animate() {
 
 function map() {
     var ind = Math.floor(zcount / 10);
+    latitude -= 0.0005;
+    longitude += 0.00158;
+
+    //SouthLatitude, WestLongitude, NorthLatitude, and EastLongitude values
+    var SL = latitude - .1;
+    var NL = latitude + .1;
+    var WL = longitude - .1;
+    var EL = longitude + .1;
+    var boundingBox = SL + "," + WL + "," + NL + "," + EL;
+    var msdnAPI = "http://dev.virtualearth.net/REST/v1/Traffic/Incidents/" + boundingBox + "?";
+    console.log(msdnAPI);
+    console.log(difficulty);
+    $.ajax({
+    type: 'GET',
+    url: msdnAPI, 
+    data: {
+        key: "ApDsB3Y0HgxN1AJaupkRmQ0o8m-QNQWUrwDxX4hE9NjKM3JO1dd_-MgRDftB5ZmX"
+    },
+    jsonp: "jsonp",
+    dataType: 'jsonp', // Pay attention to the dataType/contentType
+    success: function (data ) {
+            var total = data.resourceSets[0].estimatedTotal;
+                difficulty = total * 40;
+    }
+    });
     document.getElementById("mapimage").src = maps[ind].src;
 
   

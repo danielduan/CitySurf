@@ -14,7 +14,7 @@
     function refillXZ(){
         X.splice(0, difficulty);
         Z.splice(0, difficulty);
-        for(var i = difficulty; i < difficulty; i++)
+        for(var i = difficulty; i < difficulty * 2; i++)
         {
             var num1 = Math.random() * 14 - 7;  
             var num2 = -Math.random() * 30 - 30;
@@ -25,7 +25,7 @@
 
     //draw cubes
     function drawCubes(mv) {
-        for (var i = 0; i < difficulty; i++)
+        for (var i = 0; i < difficulty * 2; i++)
         {
             mat4.identity(mv);
             Z[i] += mph;
@@ -97,7 +97,7 @@
 
         }
         zcount += mph;
-        if(zcount >= wave * difficulty + 15)
+        if(zcount >= wave * 30 + 15)
         {
             wave+= 1;
             refillXZ();
@@ -109,11 +109,11 @@
     function drawPlane(mv) {
         mat4.identity(mv);
  
+        mat4.translate(mv, [-xPos, -.7, -1]);
 
-        mat4.translate(mv, [-xPos, -1, 0]);
      
             mvPushMatrix();
-            mat4.scale(mv,[14,0.01,10]);
+            mat4.scale(mv,[14,0.01,60]);
             gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
             gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
