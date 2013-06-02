@@ -32,10 +32,10 @@
             
             if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] - zPos) * (Z[i] - zPos)) <= .25 && zPos >= Z[i])
                 pause = !pause;
-            if(xPos < -29.5)
-                xPos = -29.5;
-            if(xPos > 29.5)
-                xPos = 29.5;
+            if(xPos < -7)
+                xPos = -6.8;
+            if(xPos > 7)
+                xPos = 6.8;
 
             mat4.translate(mv, [X[i]-xPos, -.4, Z[i]]);
             mvPushMatrix();
@@ -85,7 +85,6 @@
             setMatrixUniforms();
             gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
 
-
         }
         zcount += mph;
         if(zcount >= wave * 30 + 15)
@@ -93,7 +92,7 @@
             wave+= 1;
             refillXZ();
             zbottom += 100;
-            mph += .001;
+            mph += .01;
         }
     }   
 
