@@ -234,6 +234,8 @@
 
     function handleKeyDown(event) {
         currentlyPressedKeys[event.keyCode] = true;
+        if (event.keyCode == 32)
+            pause = !pause;
     }
 
 
@@ -244,6 +246,7 @@
 
     var pitch = 0;
     var pitchRate = 0;
+    var pause = false;
 
     var yaw = 0;
     var yawRate = 0;
@@ -251,10 +254,11 @@
     var xPos = 0;
     var yPos = 0.4;
     var zPos = 0;
-
+    var zGreatest = 0;
     var speed = 0;
 
     function handleKeys() {
+
         if (currentlyPressedKeys[33]) {
             // Page Up
             pitchRate = 0.1;
@@ -290,24 +294,38 @@
     var rCube = 0;
     var X = new Array();
     var Z = new Array();
+    var wave = 0;
+    var zcount = 0;
 
     function fillXZ(){
-        for(var i = 0; i < 1000; i++)
+        for(var i = 1000 * wave; i < 1000 * wave + 1000; i++)
         {
             var num1 = Math.random() * 140 - 70;  
-            var num2 = Math.random() * 300 - 150;
-            while(num2 > -10)
-                num2 = Math.random() * 300 - 150;
-            X[i] = num1;
+            var num2 = Math.random() * -300 - 300 * wave;
+            if (num2 < zGreatest)
+                zGreatest = num2;
+            /*if (wave == 0)
+                while(num2 > -10)
+                    num2 = Math.random() * -300 - 300 * wave;
+            */X[i] = num1;
             Z[i] = num2;
         }
     }
 
     function drawCubes(mv) {
-        for (var i = 0; i < 1000; i++)
+        zcount += 0.25;
+        if (zcount <= (zGreatest + 50) )
+            {
+                wave += 1;
+                fillXZ();
+            }
+
+        for (var i = 1000 * wave; i < 1000 * wave + 1000; i++)
         {
             mat4.identity(mv);
-            Z[i] += 1;
+            Z[i] += .25;
+            if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] - zPos) * (Z[i] - zPos)) <= 1)
+                pause = !pause;
             mat4.translate(mv, [X[i]-xPos, 0, Z[i]]);
             mvPushMatrix();
             mat4.scale(mv,[.3,.3,.3]);
@@ -348,6 +366,9 @@
         var timeNow = new Date().getTime();
         if (lastTime != 0) {
             var elapsed = timeNow - lastTime;
+            console.log(wave);
+            //console.log(zGreatest);
+            console.log(zcount);
 
             if (speed != 0) {
                 xPos -= Math.sin(degToRad(yaw)) * speed * elapsed;
@@ -367,9 +388,12 @@
 
     function tick() {
         requestAnimFrame(tick);
-        drawScene();
         handleKeys();
-        animate();
+        if (!pause)
+        {
+            drawScene();
+            animate();
+        }
     }
 
 
