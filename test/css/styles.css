@@ -81,7 +81,7 @@ padding:12px;
 	filter:alpha(opacity=50);
 }
 
-.map {
+#map {
 	position:absolute;
 	z-index:-1;
 }
