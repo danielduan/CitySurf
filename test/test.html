@@ -163,6 +163,7 @@
         event.preventDefault();
         pushRestart();
         loadmusic();
+        pause = false;
         });
         document.getElementById("mapimage").width=window.innerWidth/10;
 
@@ -190,7 +191,7 @@
 </head>
 
 
-<body style="background-color:black" onload="webGLStart();initAudio();">
+<body style="background-color:black" onload="webGLStart();initAudio();loadmusic();">
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
