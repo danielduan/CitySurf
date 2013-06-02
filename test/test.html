@@ -179,6 +179,11 @@
         document.getElementById("points").style.display = "none";
         document.getElementById("map").style.display = "none";
         document.getElementById("play_button").innerHTML = "Restart";
+        document.getElementById("play_button").addEventListener('click', function(event) {
+        event.preventDefault();
+        pushRestart();
+        pause = false;
+        });
     };
 
     function inGodMode()
