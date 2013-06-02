@@ -21,9 +21,21 @@ function animate() {
     function tick() {
         requestAnimFrame(tick);
         handleKeys();
+        count += 1;
+        if (count % 50 == 0)
+            map();
+        //map();
         if (!pause)
         {
+            //map();
             drawScene();
             animate();
         }
     }
+
+function map() {
+    var ind = Math.floor(zcount / 10);
+    var source = "<img src=\"" + maps[ind].src + "\" style=\"margin-top:10px;margin-left:10px;border: 1px solid #ddd;\">";
+    console.log(source);
+    document.getElementById("map").innerHTML = source;
+}
