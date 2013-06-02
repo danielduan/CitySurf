@@ -51,63 +51,6 @@ function initBuffers() {
 
 
 
-planeVertexPositionBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, planeVertexPositionBuffer);
-        vertices = [
-            // Bottom face
-            -1.0, -1.0, -1.0,
-             1.0, -1.0, -1.0,
-             1.0, -1.0,  1.0,
-            -1.0, -1.0,  1.0,
-        ];
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-        planeVertexPositionBuffer.itemSize = 3;
-        planeVertexPositionBuffer.numItems = 4;
-
-        planeVertexTextureCoordBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, planeVertexTextureCoordBuffer);
-        var textureCoords = [
-
-            // Bottom face
-            1.0, 1.0,
-            0.0, 1.0,
-            0.0, 0.0,
-            1.0, 0.0,
-
-        ];
-
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoords), gl.STATIC_DRAW);
-        planeVertexTextureCoordBuffer.itemSize = 2;
-        planeVertexTextureCoordBuffer.numItems = 4;
-
-
-        planeVertexIndexBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, planeVertexIndexBuffer);
-        var planeVertexIndices = [
-            
-            1, 2, 3,   1, 3, 4, // Bottom face
-            
-        ];
-        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(planeVertexIndices), gl.STATIC_DRAW);
-        planeVertexIndexBuffer.itemSize = 1;
-        planeVertexIndexBuffer.numItems = 6;
-
-        planeVertexNormalBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, planeVertexNormalBuffer);
-        var vertexNormals = [
-          // Bottom face
-           0.0, -1.0,  0.0,
-           0.0, -1.0,  0.0,
-           0.0, -1.0,  0.0,
-           0.0, -1.0,  0.0,
-        ];
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexNormals), gl.STATIC_DRAW);
-        planeVertexNormalBuffer.itemSize = 3;
-        planeVertexNormalBuffer.numItems = 4;
-
-
-
-
 
 
         cubeVertexPositionBuffer = gl.createBuffer();

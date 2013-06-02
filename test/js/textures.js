@@ -1,12 +1,20 @@
     function initTexture() {
 
-        texture = gl.createTexture();
-        texture.image = new Image();
+        texture[0] = gl.createTexture();
+        texture[0].image = new Image();
 
-        texture.image.onload = function () {
-            handleLoadedTexture(texture);
+        texture[0].image.onload = function () {
+            handleLoadedTexture(texture[0]);
         }
-        texture.image.src = "tron.png";
+        texture[0].image.src = "tron.png";
+
+        texture[1] = gl.createTexture();
+        texture[1].image = new Image();
+
+        texture[1].image.onload = function () {
+            handleLoadedTexture(texture[1]);
+        }
+        texture[1].image.src = "tron.gif";
     }
 
     function handleLoadedTexture(textures) {

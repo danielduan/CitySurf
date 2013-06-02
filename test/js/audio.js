@@ -12,7 +12,7 @@ function loadSample(url) {
 
     request.onload = function() { 
         source.buffer = context.createBuffer(request.response, false);
-        source.looping = true;
+        source.loop = true;
         source.noteOn(0);
 		visualizer();				// run jsfft visualizer
     }

@@ -54,8 +54,8 @@
             gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexNormalBuffer);
             gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, cubeVertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
-            gl.activeTexture(gl.TEXTURE0);
-            gl.bindTexture(gl.TEXTURE_2D, texture);
+            //gl.activeTexture(gl.TEXTURE0);
+            gl.bindTexture(gl.TEXTURE_2D, texture[0]);
             gl.uniform1i(shaderProgram.samplerUniform, 0);
 
             var lighting = true;
@@ -102,6 +102,62 @@
         }
     }   
 
+    function drawPlane(mv) {
+        mat4.identity(mv);
+ 
+
+        mat4.translate(mv, [-xPos, -.4, 0]);
+     
+            mvPushMatrix();
+            mat4.scale(mv,[14,0.01,10]);
+            gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
+            gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+
+            gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
+            gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, cubeVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
+
+            gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexNormalBuffer);
+            gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, cubeVertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
+
+            //gl.activeTexture(gl.TEXTURE0);
+            gl.bindTexture(gl.TEXTURE_2D, texture[1]);
+            gl.uniform1i(shaderProgram.samplerUniform, 0);
+
+            var lighting = true;
+            gl.uniform1i(shaderProgram.useLightingUniform, lighting);
+            if (lighting) {
+            gl.uniform3f(
+                shaderProgram.ambientColorUniform,
+                ambientR,
+                ambientG,
+                ambientB
+            );
+
+            var lightingDirection = [
+                lightDirectionX,
+                lightDirectionY,
+                lightDirectionZ
+            ];
+            var adjustedLD = vec3.create();
+            vec3.normalize(lightingDirection, adjustedLD);
+            vec3.scale(adjustedLD, -1);
+            gl.uniform3fv(shaderProgram.lightingDirectionUniform, adjustedLD);
+
+            gl.uniform3f(
+                shaderProgram.directionalColorUniform,
+                directionR,
+                directionG,
+                directionB
+                );
+            }
+
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
+            setMatrixUniforms();
+            gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
+        
+        mvPopMatrix();
+    }
+
     //draw the pyramid
     function drawPyramid(mv) {
         mat4.identity(mv);
@@ -136,7 +192,9 @@
         //mat4.translate(mvMatrix, [-xPos, -yPos, -zPos]);
 
         if (alive) {
-            drawPyramid(mvMatrix);
             drawCubes(mvMatrix);
+            drawPyramid(mvMatrix);
         }
+
+        drawPlane(mvMatrix);
     }
