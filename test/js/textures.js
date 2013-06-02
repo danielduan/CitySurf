@@ -6,7 +6,7 @@
         texture.image.onload = function () {
             handleLoadedTexture(texture);
         }
-        texture.image.src = "crate.gif";
+        texture.image.src = "tron.png";
     }
 
     function handleLoadedTexture(textures) {
