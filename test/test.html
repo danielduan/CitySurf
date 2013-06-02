@@ -401,6 +401,7 @@
                 xPos = -29.5;
             if(xPos > 29.5)
                 xPos = 29.5;
+
             mat4.translate(mv, [X[i]-xPos, -.4, Z[i]]);
             mvPushMatrix();
             mat4.scale(mv,[.3,.3,.3]);
