@@ -82,6 +82,7 @@
     var cubeVertexIndexBuffer;
     var cubeVertexNormalBuffer;
 
+    var difficulty = 50;
 
     var currentlyPressedKeys = {};
 
@@ -137,16 +138,26 @@
     var godmode = false;
 
     var msdnAPI = "http://dev.virtualearth.net/REST/v1/Traffic/Incidents/37,-105,45,-94?";
-  $.getJSON( msdnAPI, {
+    
+    $.ajax({
+  type: 'GET',
+  url: msdnAPI, 
+  data: {
     key: "ApDsB3Y0HgxN1AJaupkRmQ0o8m-QNQWUrwDxX4hE9NjKM3JO1dd_-MgRDftB5ZmX"
-  })
-  .done(function( data ) {
+  },
+  contentType: "jsonp", // Pay attention to the dataType/contentType
+  dataType: 'jsonp', // Pay attention to the dataType/contentType
+  success: function (data ) {
+    /*
     $.each( data.items, function( i, item ) {
         var total = item.resourceSets.estimatedTotal;
         console.log(total);
-      //$( "<img/>" ).attr( "src", item.media.m ).appendTo( "#map" );
+      
     });
-  });
+*/
+  }
+});
+
 
 
     //start webGL service
