@@ -1,7 +1,11 @@
 	function handleKeyDown(event) {
         currentlyPressedKeys[event.keyCode] = true;
         if (event.keyCode == 32)
+        {
             pause = !pause;
+            if (pause == true)
+                isPaused();
+        }
         if (event.keyCode == 67)
             initAudio();
     }
@@ -35,7 +39,10 @@
         {
             //G and g to enter godmode
             if (godmode == false)
+            {
                 godmode = true;
+                inGodMode();
+            }
             else
                 godmode = false;
         }
@@ -89,6 +96,7 @@
                 joggingAngle = 0;
                 lastTime = 0;
                 fillXZ();
+                pushRestart();
         }
     }
 
