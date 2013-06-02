@@ -68,7 +68,6 @@
 <script type="text/javascript">
 
     var gl;
-    var numCubes;
     var shaderProgram;
     var texture;
     var mvMatrix = mat4.create();
@@ -108,13 +107,12 @@
     var ambientB = 1.0;
 
     var lightDirectionX = 0.0;
-    var lightDirectionY = 10.0;
+    var lightDirectionY = 0.0;
     var lightDirectionZ = 0.0;
 
     var directionR = 0.8;
     var directionG = 0.8;
     var directionB = 0.8;
-
 
     var zcount = 0;
     var zbottom = 0;
@@ -124,7 +122,6 @@
 
     var draw = 1;
     var alive = true; 
-    var lastTime = 0;
     // Used to make us "jog" up and down as we move forward.
     var joggingAngle = 0;
     var lastTime = 0;

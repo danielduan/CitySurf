@@ -29,8 +29,10 @@
         {
             mat4.identity(mv);
             Z[i] += mph;
-            
-            if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] - zPos) * (Z[i] - zPos)) <= .25 && zPos >= Z[i])
+            var extra = mph;
+            if (mph > .5)
+                extra = .4;
+            if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] + 1) * (Z[i] + 1)) <= (.2+extra) && zPos >= Z[i])
                 pause = !pause;
             if(xPos < -7)
                 xPos = -6.8;
@@ -92,22 +94,21 @@
             wave+= 1;
             refillXZ();
             zbottom += 100;
-            mph += .01;
+            mph += .008;
         }
     }   
 
     //draw the pyramid
     function drawPyramid(mv) {
         mat4.identity(mv);
- 
+        joggingAngle += 4*(1+wave*.005);
+        mat4.translate(mv, [0.0, (Math.cos(degToRad(joggingAngle)) / 20 - 0.4), -1]);
 
-        mat4.translate(mv, [0.0, -0.4, -1]);
-     
         mvPushMatrix();
         mat4.scale(mv,[.1,.1,.1]);
         mat4.rotate(mvMatrix, degToRad(90), [1, 0, 0]);
-        mat4.rotate(mvMatrix, degToRad(Math.sin(yawRate)), [1,0,0]);
-     
+      
+
         gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, pyramidVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
      
@@ -117,7 +118,7 @@
         setMatrixUniforms();
         gl.drawArrays(gl.TRIANGLES, 0, pyramidVertexPositionBuffer.numItems);
      
-        mvPopMatrix();
+        //mvPopMatrix();
     }
 
     function drawScene() {
@@ -126,9 +127,9 @@
 
         mat4.perspective(60, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
 
-        mat4.rotate(mvMatrix, degToRad(-10), [1, 0, 0]);
-        mat4.rotate(mvMatrix, degToRad(30), [0, 10, 0]);
-        mat4.translate(mvMatrix, [-xPos, -yPos, -zPos]);
+        //mat4.rotate(mvMatrix, degToRad(-10), [1, 0, 0]);
+        //mat4.rotate(mvMatrix, degToRad(30), [0, 10, 0]);
+        //mat4.translate(mvMatrix, [-xPos, -yPos, -zPos]);
 
         if (alive) {
             drawPyramid(mvMatrix);
