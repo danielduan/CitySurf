@@ -21,7 +21,7 @@
 
                 godmode = false;
 
-                pause = true;
+                pause = false;
                 zGreatest = 0;
                 rPyramid = 0;
                 rCube = 0;
