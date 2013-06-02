@@ -46,13 +46,46 @@
             gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
             gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, cubeVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
+            gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexNormalBuffer);
+            gl.vertexAttribPointer(shaderProgram.vertexNormalAttribute, cubeVertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
+
             gl.activeTexture(gl.TEXTURE0);
-            gl.bindTexture(gl.TEXTURE_2D, crateTextures[filter]);
+            gl.bindTexture(gl.TEXTURE_2D, texture);
             gl.uniform1i(shaderProgram.samplerUniform, 0);
+
+            var lighting = true;
+            gl.uniform1i(shaderProgram.useLightingUniform, lighting);
+            if (lighting) {
+            gl.uniform3f(
+                shaderProgram.ambientColorUniform,
+                ambientR,
+                ambientG,
+                ambientB
+            );
+
+            var lightingDirection = [
+                lightDirectionX,
+                lightDirectionY,
+                lightDirectionZ
+            ];
+            var adjustedLD = vec3.create();
+            vec3.normalize(lightingDirection, adjustedLD);
+            vec3.scale(adjustedLD, -1);
+            gl.uniform3fv(shaderProgram.lightingDirectionUniform, adjustedLD);
+
+            gl.uniform3f(
+                shaderProgram.directionalColorUniform,
+                directionR,
+                directionG,
+                directionB
+                );
+            }
 
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
             setMatrixUniforms();
             gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
+
+
         }
         zcount += mph;
         if(zcount >= wave * 30 + 15)
@@ -60,7 +93,7 @@
             wave+= 1;
             refillXZ();
             zbottom += 100;
-            mph += .02;
+            mph += .001;
         }
     }   
 
