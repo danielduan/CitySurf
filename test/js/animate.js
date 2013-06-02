@@ -32,8 +32,18 @@ function animate() {
             animate();
         }
 
+        var message;
+
+        if (total < 4) {
+            message = "light";
+        } else if (total < 8) {
+            message = "moderate";
+        } else {
+            message = "severe";
+        }
+
         document.getElementById("score").innerHTML="Score: " + Math.ceil(zcount);
-        document.getElementById("condition").innerHTML="Condition: " + total;
+        document.getElementById("condition").innerHTML="Condition: " + message;
     }
 
 function map() {
@@ -48,8 +58,8 @@ function map() {
     var EL = longitude + .1;
     var boundingBox = SL + "," + WL + "," + NL + "," + EL;
     var msdnAPI = "http://dev.virtualearth.net/REST/v1/Traffic/Incidents/" + boundingBox + "?";
-    console.log(msdnAPI);
-    console.log(difficulty);
+    //console.log(msdnAPI);
+    //console.log(difficulty);
     $.ajax({
     type: 'GET',
     url: msdnAPI, 

@@ -85,8 +85,8 @@ padding:12px;
 	margin-top:10px;
 	margin-left:10px;
 	border: 1px solid #ddd;
-	opacity:0.5;
-	filter:alpha(opacity=50);
+	opacity:0.7;
+	filter:alpha(opacity=70);
 }
 
 #map {
