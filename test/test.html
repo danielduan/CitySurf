@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<title>Learning WebGL &mdash; lesson 4</title>
+<title>Cube Runner</title>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 
 <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
@@ -149,7 +149,53 @@
     var cubeVertexIndexBuffer;
 
     function initBuffers() {
-
+        pyramidVertexPositionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
+    var vertices = [
+        // Front face
+        -1, -1,  1,
+         1, -1,  1,
+         0,  1,  0,
+        // Right face
+         0,  1,  0,
+         1, -1,  1,
+         0, -1, -1,
+        // Left face
+        -1, -1,  1,
+         0,  1,  0,
+         0, -1, -1,
+        // Bottom face
+        -1, -1,  1,
+         1, -1,  1,
+         0, -1, -1
+    ];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+    pyramidVertexPositionBuffer.itemSize = 3;
+    pyramidVertexPositionBuffer.numItems = 12;
+ 
+    pyramidVertexColorBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexColorBuffer);
+    var colors = [
+        // Front face
+        1.0, 1.0, 1.0, 1.0,
+        1.0, 1.0, 1.0, 1.0,
+        1.0, 1.0, 1.0, 1.0,
+        // Right face
+        0.0, 1.0, 0.0, 1.0,
+        0.0, 1.0, 0.0, 1.0,
+        0.0, 1.0, 0.0, 1.0,
+        // Back face
+        0.0, 0.0, 1.0, 1.0,
+        0.0, 0.0, 1.0, 1.0,
+        0.0, 0.0, 1.0, 1.0,
+        // Left face
+        1.0, 1.0, 1.0, 1.0,
+        1.0, 1.0, 1.0, 1.0,
+        1.0, 1.0, 1.0, 1.0,
+    ];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+    pyramidVertexColorBuffer.itemSize = 4;
+    pyramidVertexColorBuffer.numItems = 12;
 
         cubeVertexPositionBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
@@ -249,7 +295,7 @@
     var pause = false;
 
     var yaw = 0;
-    var yawRate = 0;
+    var yawRate = .5;
 
     var xPos = 0;
     var yPos = 0.4;
@@ -269,21 +315,23 @@
             pitchRate = 0;
         }
 
-        if (currentlyPressedKeys[37] || currentlyPressedKeys[65]) {
-            // Left cursor key or A
+        if (currentlyPressedKeys[38] || currentlyPressedKeys[87]) {
+            // up arrow
             yawRate = 0.1;
-        } else if (currentlyPressedKeys[39] || currentlyPressedKeys[68]) {
-            // Right cursor key or D
+        } else if (currentlyPressedKeys[40] || currentlyPressedKeys[83]) {
+            // down arrow
             yawRate = -0.1;
         } else {
             yawRate = 0;
         }
 
-        if (currentlyPressedKeys[38] || currentlyPressedKeys[87]) {
-            // Up cursor key or W
+        if (currentlyPressedKeys[37] || currentlyPressedKeys[65]) {
+            // left arrow
+            yawRate = .1;
             speed = 0.003;
-        } else if (currentlyPressedKeys[40] || currentlyPressedKeys[83]) {
-            // Down cursor key
+        } else if (currentlyPressedKeys[39] || currentlyPressedKeys[68]) {
+            // right arrow
+            yawRate = -.1;
             speed = -0.003;
         } else {
             speed = 0;
@@ -300,33 +348,54 @@
     function fillXZ(){
         for(var i = 1000 * wave; i < 1000 * wave + 1000; i++)
         {
-            var num1 = Math.random() * 140 - 70;  
-            var num2 = Math.random() * -300 - 300 * wave;
-            if (num2 < zGreatest)
-                zGreatest = num2;
-            /*if (wave == 0)
-                while(num2 > -10)
-                    num2 = Math.random() * -300 - 300 * wave;
-            */X[i] = num1;
+            var num1 = Math.random() * 60 - 30;  
+            var num2 = -Math.random() * 300 ;
+            while(num2 > -10)
+                num2 = -Math.random() * 300 ;
+            X[i] = num1;
+            Z[i] = num2;
+        }
+        for(var i = 1000; i < 2000; i++)
+        {
+            var num1 = Math.random() * 60 - 30;  
+            var num2 = -Math.random() * 300 - 300;
+            X[i] = num1;
+            Z[i] = num2;
+        }
+        for(var i = 2000; i < 3000; i++)
+        {
+            var num1 = Math.random() * 60 - 30;  
+            var num2 = -Math.random() * 300 - 600;
+            X[i] = num1;
+            Z[i] = num2;
+        }
+        for(var i = 3000; i < 4000; i++)
+        {
+            var num1 = Math.random() * 60 - 30;   
+            var num2 = -Math.random() * 300 - 900;
+            X[i] = num1;
+            Z[i] = num2;
+        }
+        for(var i = 4000; i < 5000; i++)
+        {
+            var num1 = Math.random() * 60 - 30;   
+            var num2 = -Math.random() * 300 - 1200;
+            X[i] = num1;
             Z[i] = num2;
         }
     }
 
-    function drawCubes(mv) {
-        zcount += 0.25;
-        if (zcount <= (zGreatest + 50) )
-            {
-                wave += 1;
-                fillXZ();
-            }
+    var zcount = 0;
+    var zbottom = 0;
 
-        for (var i = 1000 * wave; i < 1000 * wave + 1000; i++)
+    function drawCubes(mv) {
+        for (var i = zbottom; i < zbottom + 2000; i++)
         {
             mat4.identity(mv);
             Z[i] += .25;
             if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] - zPos) * (Z[i] - zPos)) <= 1)
                 pause = !pause;
-            mat4.translate(mv, [X[i]-xPos, 0, Z[i]]);
+            mat4.translate(mv, [X[i]-xPos, -.4, Z[i]]);
             mvPushMatrix();
             mat4.scale(mv,[.3,.3,.3]);
             gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
@@ -339,21 +408,48 @@
             setMatrixUniforms();
             gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
         }
+        zcount+=.25;
+        if(zcount % 1100 == 0)
+            zbottom += 1000;
+    }   
+
+    function drawPyramid(mv) {
+        mat4.identity(mv);
+ 
+        mat4.translate(mv, [0.0, 0.0, -0.5]);
+     
+        mvPushMatrix();
+        mat4.scale(mv,[.2,.2,.2]);
+        //mvRotate(rPyramid, [1, 1, 0]);
+     
+        gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
+        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, pyramidVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+     
+        gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexColorBuffer);
+        gl.vertexAttribPointer(shaderProgram.vertexColorAttribute, pyramidVertexColorBuffer.itemSize, gl.FLOAT, false, 0, 0);
+     
+        setMatrixUniforms();
+        gl.drawArrays(gl.TRIANGLES, 0, pyramidVertexPositionBuffer.numItems);
+     
+        mvPopMatrix();
     }
 
     var draw = 1;
-
+    var alive = true; 
     function drawScene() {
         gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
         mat4.perspective(60, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
 
-        mat4.rotate(mvMatrix, degToRad(-pitch), [1, 0, 0]);
-        mat4.rotate(mvMatrix, degToRad(-yaw), [0, 1, 0]);
+        mat4.rotate(mvMatrix, degToRad(-10), [1, 0, 0]);
+        mat4.rotate(mvMatrix, degToRad(30), [0, 10, 0]);
         mat4.translate(mvMatrix, [-xPos, -yPos, -zPos]);
 
-        drawCubes(mvMatrix);
+        if (alive) {
+            drawPyramid(mvMatrix);
+            drawCubes(mvMatrix);
+        }
     }
 
     var lastTime = 0;
@@ -371,8 +467,8 @@
             console.log(zcount);
 
             if (speed != 0) {
-                xPos -= Math.sin(degToRad(yaw)) * speed * elapsed;
-                zPos -= Math.cos(degToRad(yaw)) * speed * elapsed;
+                xPos -= /*Math.sin(degToRad(yaw))*/  speed * elapsed;
+                zPos -= /*Math.cos(degToRad(yaw))*/  speed * elapsed;
 
                 joggingAngle += elapsed * 0.6; // 0.6 "fiddle factor" - makes it feel more realistic :-)
                 yPos = Math.sin(degToRad(joggingAngle)) / 20 + 0.4
