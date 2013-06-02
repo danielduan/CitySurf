@@ -38,4 +38,13 @@ function map() {
     var source = "<img src=\"" + maps[ind].src + "\" style=\"margin-top:10px;margin-left:10px;border: 1px solid #ddd;\">";
     console.log(source);
     document.getElementById("map").innerHTML = source;
+
+    $.ajax({
+    dataType: "json",
+    url: "http://dev.virtualearth.net/REST/v1/Traffic/Incidents/37,-105,45,-94?",
+    data: {
+    key: "ApDsB3Y0HgxN1AJaupkRmQ0o8m-QNQWUrwDxX4hE9NjKM3JO1dd_-MgRDftB5ZmX"
+    }
+    });
+
 }
