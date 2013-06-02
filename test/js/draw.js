@@ -40,7 +40,7 @@
                     alive = false;
                 }
             }
-            
+
             if(xPos < -7)
                 xPos = -6.8;
             if(xPos > 7)
@@ -92,8 +92,7 @@
 
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
             setMatrixUniforms();
-            if(alive)
-                gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
+            gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
 
         }
         zcount += mph;
