@@ -38,6 +38,7 @@
                 {
                     pause = !pause;
                     alive = false;
+                    isDead();
                 }
             }
 
