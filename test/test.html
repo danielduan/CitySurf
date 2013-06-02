@@ -466,9 +466,6 @@
         var timeNow = new Date().getTime();
         if (lastTime != 0) {
             var elapsed = timeNow - lastTime;
-            console.log(wave);
-            //console.log(zGreatest);
-            console.log(zcount);
 
             if (speed != 0) {
                 xPos -= /*Math.sin(degToRad(yaw))*/  speed * elapsed;
@@ -499,11 +496,13 @@
 
     function webGLStart() {
         var canvas = document.getElementById("lesson04-canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
         initGL(canvas);
         initShaders()
         initBuffers();
         fillXZ();
-        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        gl.clearColor(0.0, 0.0, 0.0, 0.0);
         gl.enable(gl.DEPTH_TEST);
 
 
@@ -519,8 +518,9 @@
 </head>
 
 
-<body onload="webGLStart();">
-    <canvas id="lesson04-canvas" style="border: none;" width="1000" height="600"></canvas>
+<body style="background-image:url('http://1.androidauthority.com/wp-content/gallery/nexus-4-2-wallpapers/android_4-2_jellybean_background.png')" onload="webGLStart();">
+
+    <canvas id="lesson04-canvas" style="border: none;"></canvas>
 </body>
 
 </html>
