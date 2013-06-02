@@ -32,7 +32,8 @@ function animate() {
             animate();
         }
 
-        document.getElementById("points").innerHTML=Math.ceil(zcount);
+        document.getElementById("score").innerHTML="Score: " + Math.ceil(zcount);
+        document.getElementById("condition").innerHTML="Condition: " + total;
     }
 
 function map() {
