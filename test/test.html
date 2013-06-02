@@ -104,7 +104,7 @@
         initBuffers();
         initTexture();
         fillXZ();
-        gl.clearColor(0.0, 0.0, 0.0, 0.8);
+        gl.clearColor(0.0, 0.0, 0.0, 0.4);
         gl.enable(gl.DEPTH_TEST);
 
         document.onkeydown = handleKeyDown;
@@ -122,6 +122,7 @@
 <body style="background-color:black" onload="webGLStart();initAudio();">
 
     <canvas id="cube-runner" style="border: none; position:absolute; z-index:-1;"></canvas>
+
     <canvas id="music" style="border: none; position:absolute; z-index:-2;"></canvas>
 </body>
 
