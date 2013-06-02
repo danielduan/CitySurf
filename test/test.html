@@ -393,8 +393,10 @@
         {
             mat4.identity(mv);
             Z[i] += .25;
-            if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] - zPos) * (Z[i] - zPos)) <= 1)
+            if (Math.sqrt((X[i] - xPos) * (X[i] - xPos) + (Z[i] - zPos) * (Z[i] - zPos)) <= 0.25 && zPos >= Z[i]) {
                 pause = !pause;
+                return
+            }
             mat4.translate(mv, [X[i]-xPos, -.4, Z[i]]);
             mvPushMatrix();
             mat4.scale(mv,[.3,.3,.3]);
@@ -416,10 +418,10 @@
     function drawPyramid(mv) {
         mat4.identity(mv);
  
-        mat4.translate(mv, [0.0, 0.0, -0.5]);
+        mat4.translate(mv, [0.0, -0.2, -0.5]);
      
         mvPushMatrix();
-        mat4.scale(mv,[.2,.2,.2]);
+        mat4.scale(mv,[.05,.05,.05]);
         //mvRotate(rPyramid, [1, 1, 0]);
      
         gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexPositionBuffer);
