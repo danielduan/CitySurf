@@ -137,11 +137,14 @@
 
     //start webGL service
     function webGLStart() {
-        for (var i = 0; i < 10; i++)
+        for (var i = 0; i < 20; i++)
         {
             longitude += 0.00001;
             maps[i] = new Image();
-            maps[i].src = "0" + i + ".png";
+            if (i < 10)
+                maps[i].src = "0" + i + ".png";
+            else
+                maps[i].src = i + ".png";
         }
         var canvas = document.getElementById("cube-runner");
         canvas.width = window.innerWidth;
@@ -167,7 +170,7 @@
 
 
 <body style="background-color:black" onload="webGLStart();initAudio();">
-<div id="map" style="position:absolute; z-index:-1"><img src="00.png" id="mapimage" width="100px" style="margin-top:10px;margin-left:10px;border: 1px solid #ddd; opacity:0.5;
+<div id="map" style="position:absolute; z-index:-1"><img src="00.png" id="mapimage" width="150px" style="margin-top:10px;margin-left:10px;border: 1px solid #ddd; opacity:0.5;
 filter:alpha(opacity=50);"></div>
 
     <canvas id="cube-runner" style="border: none; position:absolute; z-index:-2;"></canvas>
