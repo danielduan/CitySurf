@@ -31,6 +31,8 @@ function animate() {
             drawScene();
             animate();
         }
+
+        document.getElementById("points").innerHTML=Math.ceil(zcount);
     }
 
 function map() {

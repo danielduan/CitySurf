@@ -164,6 +164,7 @@
         pushRestart();
         loadmusic();
         });
+        document.getElementById("mapimage").width=window.innerWidth/10;
 
         tick();
     }
@@ -180,6 +181,7 @@
     function pushRestart()
     {
         document.getElementById("menu").style.display = "none";
+        document.getElementById("points").style.display = "block";
     };
 
 </script>
@@ -189,6 +191,15 @@
 
 
 <body style="background-color:black" onload="webGLStart();initAudio();">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=515304461857778";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <div id="map">
     <img src="00.png" id="mapimage" width="100px" >
@@ -203,10 +214,13 @@
       during <a href="http://boyleheightshack.eventbrite.com/">Hack for LA</a>.
     </p>
         <button id="play_button">Play</button>
+        <div id="facebook">
+            <div class="fb-like" data-href="http://citysurf.herokapp.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark"></div>
+        </div>
     </div>
   
     <div id="points">
-        0
+        100
     </div>
 
 <!--<img id="map" src="http://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=200x200&sensor=false&key=AIzaSyAfC_GeRTdvQEtBBbuf-6ZX6z8OwDd4mig" style="position:absolute; z-index:-1">-->
