@@ -6,6 +6,8 @@
 
 <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
 <script type="text/javascript" src="webgl-utils.js"></script>
+<script type="text/javascript" src="dsp.js"></script>
+<script type="text/javascript" src="audio.js"></script>
 
 <script id="shader-fs" type="x-shader/x-fragment">
     precision mediump float;
@@ -601,9 +603,10 @@
 </head>
 
 
-<body style="background-image:url('http://1.androidauthority.com/wp-content/gallery/nexus-4-2-wallpapers/android_4-2_jellybean_background.png')" onload="webGLStart();">
+<body style="background-color:black" onload="webGLStart();initAudio();">
 
-    <canvas id="lesson04-canvas" style="border: none;"></canvas>
+    <canvas id="lesson04-canvas" style="border: none; position:absolute; z-index:-1;"></canvas>
+    <canvas id="music" style="border: none; position:absolute; z-index:-2;"></canvas>
 </body>
 
 </html>
