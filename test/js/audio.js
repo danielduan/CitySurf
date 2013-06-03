@@ -45,7 +45,7 @@ function initAudio() {
 
 function loadmusic(){
 	// Load the sample buffer for the audio source
-	loadSample("greyhound.m4a");
+	loadSample("greyhound.mp3");
 }
 
 // #####################
