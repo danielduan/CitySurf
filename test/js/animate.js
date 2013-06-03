@@ -42,7 +42,7 @@ function tick() {
     }
 
     document.getElementById("score").innerHTML = "Score: " + Math.ceil(zcount);
-    document.getElementById("condition").innerHTML = "Condition: " + message;
+    document.getElementById("condition").innerHTML = "Traffic condition: " + message;
 }
 
 function map() {

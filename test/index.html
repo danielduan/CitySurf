@@ -6,7 +6,7 @@
 <meta property="og:url" content="http://citysurf.herokuapp.com/"/>
 <meta property="og:image" content="http://citysurf.herokuapp.com/icon.png"/>
 <link rel="shortcut icon" href="http://citysurf.herokuapp.com/icon.ico"/>
-<meta name="description" property="og:description" content="An interactive way to visualize local traffic condition"/>
+<meta name="description" property="og:description" content="An interactive game to visualize local traffic condition in Los Angeles."/>
 <title>CitySurf</title>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 <link href='http://fonts.googleapis.com/css?family=Orbitron:700,400' rel='stylesheet' type='text/css'>
@@ -67,8 +67,7 @@
 <body style="background-color:black" onload="webGLStart();initAudio();loadmusic();">
 
 <!--facebook-->
-<div id="fb-root">
-</div>
+<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -82,30 +81,34 @@
     <img src="img/maps/00.png" id="mapimage">
 </div>
 
-<div id="menu">
+<div id="menu" class="osd">
     <h1>CitySurf</h1>
     <p>
-         Movement: left and right arrows<br>
-         Pause/Resume: space<br>
+         Movement: Left and Right Arrows<br>
+         Pause/Resume: Space<br>
         <br>
-         Made by Ben Lin, Daniel Duan, <br>
-        and Elison Chen during <a href="http://boyleheightshack.eventbrite.com/">Hack for LA</a>.
+         Made by <a href="http://www.linkedin.com/profile/view?id=163719095">Ben Lin</a>, <a href="http://www.danielduan.net">Daniel Duan</a>, <br>
+        and <a href="http://www.linkedin.com/profile/view?id=118833734">Elison Chen</a> during <a href="http://boyleheightshack.eventbrite.com/">Hack for LA</a>.
     </p>
     <button id="play_button">Play</button>
     <div id="facebook">
-        <div class="fb-like" data-href="http://citysurf.herokapp.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark">
-        </div>
+        <div class="fb-like" data-href="http://citysurf.herokuapp.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial" data-colorscheme="dark"></div>
     </div>
 </div>
 
 <div id="points">
-    <span id="score"></span>
+    <span id="score">0</span>
     <span id="condition">Traffic Condition: Light</span>
 </div>
 
 <canvas id="cube-runner"></canvas>
 
 <canvas id="music"></canvas>
+
+<div id="footer" class="osd">
+  <p><span id="text">CitySurf is created using the following open source libraries: <a href="https://github.com/toji/gl-matrix">glMatrix</a>, <a href="https://github.com/corbanbrook/dsp.js/">dsp.js</a>, <a href="https://code.google.com/p/webglsamples/source/browse/book/webgl-utils.js?r=41401f8a69b1f8d32c6863ac8c1953c8e1e8eba0">webgl-utils.js</a>.
+    <br>This is also our final project for Professor <a href="http://www.ust.ucla.edu/~friedman/">Friedman</a>'s <a href="https://courseweb.seas.ucla.edu/classView.php?term=13S&srs=187720200">CS174A</a> at <a href="http://www.ucla.edu">UCLA</a>. Source code is available <a href="https://github.com/danielduan/CitySurf">here</a>.</span></p>
+</div>
 
 <!--google analytics-->
 <script>

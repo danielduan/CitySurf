@@ -39,10 +39,10 @@
                 }
             }
 
-            if (xPos < -7)
-                xPos = -6.8;
-            if (xPos > 7)
-                xPos = 6.8;
+            if (xPos < -6.9)
+                xPos = -6.9;
+            if (xPos > 6.9)
+                xPos = 6.9;
 
             mat4.translate(mv, [X[i] - xPos, -.4, Z[i]]);
             mvPushMatrix();

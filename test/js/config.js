@@ -77,7 +77,7 @@ function webGLStart() {
     gl.enable(gl.DEPTH_TEST);
     document.onkeydown = handleKeyDown;
     document.onkeyup = handleKeyUp;
-    document.getElementById("mapimage").width = window.innerWidth / 10;
+    document.getElementById("mapimage").width = window.innerWidth * 0.15;
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
             pushRestart();
@@ -93,6 +93,7 @@ function isDead() {
     document.getElementById("menu").style.display = "block";
     document.getElementById("points").style.display = "none";
     document.getElementById("map").style.display = "none";
+    document.getElementById("footer").style.display = "block";
     document.getElementById("play_button").innerHTML = "Restart";
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
@@ -150,5 +151,5 @@ function pushRestart() {
     document.getElementById("menu").style.display = "none";
     document.getElementById("points").style.display = "block";
     document.getElementById("map").style.display = "block";
-    document.getElementById("mapimage").width = window.innerWidth / 10;
+    document.getElementById("footer").style.display = "none";
 };
