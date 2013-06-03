@@ -75,7 +75,10 @@ function map() {
                     difficulty = total * 20;
             }
         });
-    document.getElementById("mapimage").src = maps[ind].src;
+    if (ind < 20){
+        document.getElementById("mapimage").src = maps[ind].src;
+    }
+    
 
 
 }
