@@ -39,3 +39,6 @@ across different platforms.
 Please visit our site to get a working demo. Due to cross origin
 security issues in many browsers, mapping and music will not work
 when the site is opened directly from the html file.
+
+we used the following open source libraries: glMatrix, dsp.js,
+and webgl-utils.js.
