@@ -61,9 +61,9 @@ function webGLStart() {
     for (var i = 0; i < 20; i++) {
         maps[i] = new Image();
         if (i < 10)
-            maps[i].src = "0" + i + ".png";
+            maps[i].src = "img/" + "0"  + i + ".png";
         else
-            maps[i].src = i + ".png";
+            maps[i].src = "img/" + i + ".png";
     }
     var canvas = document.getElementById("cube-runner");
     canvas.width = window.innerWidth;
