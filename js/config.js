@@ -73,7 +73,7 @@ function webGLStart() {
     initBuffers();
     initTexture();
     fillXZ();
-    gl.clearColor(0.0, 0.0, 0.0, 0.4);
+    gl.clearColor(0.0, 0.0, 0.0, 0.2);
     gl.enable(gl.DEPTH_TEST);
     document.onkeydown = handleKeyDown;
     document.onkeyup = handleKeyUp;
@@ -81,7 +81,6 @@ function webGLStart() {
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
             pushRestart();
-            loadmusic();
             pause = false;
         });
     tick();
@@ -91,6 +90,7 @@ function isPaused() {};
 
 function isDead() {
     document.getElementById("menu").style.display = "block";
+    document.getElementById("status").innerHTML = "Game Over";
     document.getElementById("points").style.display = "none";
     document.getElementById("map").style.display = "none";
     document.getElementById("footer").style.display = "block";
