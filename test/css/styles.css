@@ -63,6 +63,10 @@ background-color:rgba(0,0,0,0.5);
 	margin-top: 10px;
 }
 
+.twitter-share-button {
+	margin-left:25px;
+}
+
 #points {
 position:absolute;
 width:580px;
