@@ -15,6 +15,7 @@ function loadSample(url) {
         source.loop = true;
         source.noteOn(0);
         visualizer(); // run jsfft visualizer
+        document.getElementById("status").innerHTML = "Loading Complete";
     }
 
     request.send();

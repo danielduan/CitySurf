@@ -84,6 +84,9 @@
 <div id="menu" class="osd">
     <h1>CitySurf</h1>
     <p>
+        <span id="status">Loading..</span></br>
+    </p>
+    <p>
          Movement: Left and Right Arrows<br>
          Pause/Resume: Space<br>
         <br>
@@ -108,7 +111,7 @@
 <canvas id="music"></canvas>
 
 <div id="footer" class="osd">
-  <p><span id="text">CitySurf is created using the following open source libraries: <a href="https://github.com/toji/gl-matrix">glMatrix</a>, <a href="https://github.com/corbanbrook/dsp.js/">dsp.js</a>, <a href="https://code.google.com/p/webglsamples/source/browse/book/webgl-utils.js?r=41401f8a69b1f8d32c6863ac8c1953c8e1e8eba0">webgl-utils.js</a>.
+  <p><span id="text">CitySurf is created using the following open source libraries: <a href="https://github.com/toji/gl-matrix">glMatrix</a>, <a href="https://github.com/corbanbrook/dsp.js/">dsp.js</a>, and <a href="https://code.google.com/p/webglsamples/source/browse/book/webgl-utils.js?r=41401f8a69b1f8d32c6863ac8c1953c8e1e8eba0">webgl-utils.js</a>.
     <br>This is also our final project for Professor <a href="http://www.ust.ucla.edu/~friedman/">Friedman</a>'s <a href="https://courseweb.seas.ucla.edu/classView.php?term=13S&srs=187720200">CS174A</a> at <a href="http://www.ucla.edu">UCLA</a>. Source code is available <a href="https://github.com/danielduan/CitySurf">here</a>.</span></p>
 </div>
 

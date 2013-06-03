@@ -49,6 +49,10 @@ cursor: hand;
 cursor: pointer;
 }
 
+#status {
+	color:#18CAE6;
+}
+
 #footer {
 width:800px;
 top:90%;
