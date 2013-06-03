@@ -6,7 +6,7 @@
         texture[0].image.onload = function () {
             handleLoadedTexture(texture[0]);
         }
-        texture[0].image.src = "tron.png";
+        texture[0].image.src = "img/tron.png";
 
         texture[1] = gl.createTexture();
         texture[1].image = new Image();
@@ -14,7 +14,7 @@
         texture[1].image.onload = function () {
             handleLoadedTexture(texture[1]);
         }
-        texture[1].image.src = "path.png";
+        texture[1].image.src = "img/path.png";
     }
 
     function handleLoadedTexture(textures) {
