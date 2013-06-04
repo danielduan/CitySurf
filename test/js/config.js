@@ -154,11 +154,12 @@ function isDead() {
 function inGodMode() {};
 
 function pushRestart() {
-    document.getElementById("menu").style.display = "none";
+    document.getElementById("status").innerHTML = "Analyzing music and generating blocks...";
+    playMain();
     document.getElementById("points").style.display = "block";
     document.getElementById("map").style.display = "block";
     document.getElementById("footer").style.display = "none";
-    playMain();
+    document.getElementById("menu").style.display = "none";
 };
 
 
