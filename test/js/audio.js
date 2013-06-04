@@ -172,7 +172,7 @@ function new_pos(x, y) {
     }
 }
 
-var spectrum_on = true;
+var spectrum_on = false;
 
 function visualizer() {
 
