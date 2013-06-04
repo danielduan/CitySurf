@@ -68,6 +68,9 @@ function webGLStart() {
     var canvas = document.getElementById("cube-runner");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    if (BrowserDetect.browser != "Chrome") {
+        document.getElementById("status").innerHTML = "Please use Google Chrome";
+    }
     initGL(canvas);
     initShaders()
     initBuffers();
@@ -76,9 +79,7 @@ function webGLStart() {
     initAudio();
     gl.clearColor(0.0, 0.0, 0.0, 0.2);
     gl.enable(gl.DEPTH_TEST);
-    if (BrowserDetect.browser != "Chrome") {
-        document.getElementById("status").innerHTML = "Please use Google Chrome";
-    }
+    
     document.onkeydown = handleKeyDown;
     document.onkeyup = handleKeyUp;
     document.getElementById("mapimage").width = window.innerWidth * 0.15;
