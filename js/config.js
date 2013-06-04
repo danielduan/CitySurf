@@ -9,7 +9,7 @@ var cubeVertexPositionBuffer;
 var cubeVertexTextureCoordBuffer;
 var cubeVertexIndexBuffer;
 var cubeVertexNormalBuffer;
-var difficulty = 50;
+var difficulty = 30;
 var currentlyPressedKeys = {};
 //Positions
 var pitch = 0;
@@ -54,7 +54,7 @@ var longitude = -118.445;
 var maps = new Array();
 var count = 0;
 var godmode = false;
-var total;
+var total = 0;
 //start webGL service
 
 function webGLStart() {

@@ -22,7 +22,7 @@ function tick() {
     requestAnimFrame(tick);
     handleKeys();
     count += 1;
-    if (count % 50 == 0)
+    if (count % 300 == 0)
         map();
     //map();
     if (!pause) {
@@ -33,22 +33,23 @@ function tick() {
 
     var message;
 
-    if (total < 4) {
+    if (total < 6) {
         message = "light";
-    } else if (total < 8) {
+    } else if (total < 12) {
         message = "moderate";
     } else {
         message = "severe";
     }
 
     document.getElementById("score").innerHTML = "Score: " + Math.ceil(zcount);
+    //document.getElementById("score").innerHTML = "Score: " + total;
     document.getElementById("condition").innerHTML = "Traffic condition: " + message;
 }
 
 function map() {
-    var ind = Math.floor(zcount / 10);
-    latitude -= 0.0005;
-    longitude += 0.00158;
+    var ind = Math.floor(zcount / 100);
+    latitude -= 0.003;
+    longitude += 0.0058;
 
     //SouthLatitude, WestLongitude, NorthLatitude, and EastLongitude values
     var SL = latitude - .1;
@@ -69,12 +70,17 @@ function map() {
             dataType: 'jsonp', // Pay attention to the dataType/contentType
             success: function (data) {
                 total = data.resourceSets[0].estimatedTotal;
-                if (total == 0 || total == 1 || total == 2)
+
+                if (total < 6)
                     difficulty = 30;
-                else if (total == 3)
-                    difficulty = 40;
                 else
-                    difficulty = total * 10;
+                    difficulty = total * 5;
+
+                if (difficulty > 70) {
+                    difficulty = 70;
+                }
+
+                console.log("total: "+total + " difficulty: " + difficulty);
             }
         });
     if (ind < 20){
