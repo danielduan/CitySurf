@@ -80,7 +80,7 @@ function map() {
                     difficulty = 70;
                 }
 
-                console.log("total: "+total + " difficulty: " + difficulty);
+                //console.log("total: "+total + " difficulty: " + difficulty);
             }
         });
     if (ind < 20){
