@@ -98,7 +98,7 @@ function isDead() {
     document.getElementById("menu").style.display = "block";
     document.getElementById("status").innerHTML = "Game Over";
     document.getElementById("points").style.display = "none";
-    document.getElementById("map").style.display = "none";
+    document.getElementById("mapimage").style.display = "none";
     document.getElementById("footer").style.display = "block";
     document.getElementById("play_button").innerHTML = "Restart";
     document.getElementById("play_button").addEventListener('click', function (event) {
@@ -158,7 +158,7 @@ function inGodMode() {};
 function pushRestart() {
     playMain();
     document.getElementById("points").style.display = "block";
-    document.getElementById("map").style.display = "block";
+    document.getElementById("mapimage").style.display = "block";
     document.getElementById("footer").style.display = "none";
     document.getElementById("menu").style.display = "none";
 };
