@@ -119,6 +119,7 @@ function isDead() {
                 zPos = 0;
                 speed = 0;
                 godmode = false;
+                planeScale = 0;
                 pause = false;
                 zGreatest = 0;
                 rPyramid = 0;
