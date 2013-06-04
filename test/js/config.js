@@ -73,7 +73,7 @@ function webGLStart() {
     initBuffers();
     initTexture();
     fillXZ();
-    loadMain();
+    initAudio();
     gl.clearColor(0.0, 0.0, 0.0, 0.2);
     gl.enable(gl.DEPTH_TEST);
     document.onkeydown = handleKeyDown;
