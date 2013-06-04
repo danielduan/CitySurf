@@ -11,6 +11,7 @@
             }
             else
             {
+                document.getElementById("status").innerHTML = "Analyzing music and generating blocks...";
                 pitch = 0;
                 pitchRate = 0;
                 yaw = 0;

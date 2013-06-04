@@ -103,6 +103,7 @@ function isDead() {
     document.getElementById("play_button").innerHTML = "Restart";
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
+            document.getElementById("status").innerHTML = "Analyzing music and generating blocks...";
             pushRestart();
             if (alive) {
                 pause = !pause;
@@ -154,7 +155,6 @@ function isDead() {
 function inGodMode() {};
 
 function pushRestart() {
-    document.getElementById("status").innerHTML = "Analyzing music and generating blocks...";
     playMain();
     document.getElementById("points").style.display = "block";
     document.getElementById("map").style.display = "block";
