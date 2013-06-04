@@ -1,6 +1,24 @@
 	function handleKeyDown(event) {
         currentlyPressedKeys[event.keyCode] = true;
         //space bar i think
+
+        if (currentlyPressedKeys[71] || currentlyPressedKeys[103])
+        {
+            //G and g to enter godmode
+            if (godmode == false)
+            {
+                godmode = true;
+                inGodMode();
+                spectrum_on = true;
+                document.getElementById("condition").innerHTML = "GOD MODE ON";
+            }
+            else {
+                godmode = false;
+                spectrum_on = false;
+                document.getElementById("condition").innerHTML = "GOD MODE OFF";
+            }
+        }
+
         if (event.keyCode == 32)
         {
             if(alive)
@@ -46,7 +64,7 @@
 
                 zcount = 0;
                 zbottom = 0;
-
+                planeScale = 0;
                 mph = .1;
                 filter = 0;
 
@@ -91,22 +109,7 @@
             speed = 0;
         }
 
-        if (currentlyPressedKeys[71] || currentlyPressedKeys[103])
-        {
-            //G and g to enter godmode
-            if (godmode == false)
-            {
-                godmode = true;
-                inGodMode();
-                spectrum_on = true;
-                document.getElementById("condition").innerHTML = "GOD MODE ON";
-            }
-            else {
-                godmode = false;
-                spectrum_on = false;
-                document.getElementById("condition").innerHTML = "GOD MODE OFF";
-            }
-        }
+
 
         if (currentlyPressedKeys[114] || currentlyPressedKeys[82])
         {

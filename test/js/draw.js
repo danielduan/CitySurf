@@ -24,6 +24,8 @@
         }
     }
 
+    var planeScale=0;
+
     //draw cubes
 
     function drawCubes(mv) {
@@ -46,7 +48,7 @@
             if (xPos > 6.9)
                 xPos = 6.9;
 
-            mat4.translate(mv, [X[i] - xPos, -.4, Z[i]]);
+            mat4.translate(mv, [X[i] - xPos, (9-planeScale)*.4, Z[i]]);
             mvPushMatrix();
             mat4.scale(mv, [.3, .3, .3]);
             gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
@@ -102,16 +104,14 @@
         }
     }
 
-var planeScale=0;
-
     function drawPlane(mv) {
         mat4.identity(mv);
 
-        mat4.translate(mv, [-xPos, -.7, -1]);
+        mat4.translate(mv, [-xPos, -.8, -1]);
 
         if (planeScale < 10)
         {
-               planeScale += 0.1;
+               planeScale += 0.2;
                console.log(planeScale);
         }
 
