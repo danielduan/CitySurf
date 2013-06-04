@@ -34,7 +34,7 @@ function loadMain() {
     request.responseType = "arraybuffer";
 
     request.onload = function () {
-        mainsong = context.createBuffer(request.response, false);
+        mainsong = request.response;
         document.getElementById("status").innerHTML = "Loading Complete";
         document.getElementById("play_button").style.visibility = "visible";
     }
@@ -43,7 +43,7 @@ function loadMain() {
 }
 
 function playMain() {
-    source.buffer = mainsong;
+    source.buffer = context.createBuffer(mainsong, false);
     source.loop = true;
     source.noteOn(0);
     visualizer(); // run jsfft visualizer
@@ -172,7 +172,7 @@ function new_pos(x, y) {
     }
 }
 
-var spectrum_on = false;
+var spectrum_on = true;
 
 function visualizer() {
 

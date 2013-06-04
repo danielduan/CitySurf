@@ -1,5 +1,6 @@
 	function handleKeyDown(event) {
         currentlyPressedKeys[event.keyCode] = true;
+        //space bar i think
         if (event.keyCode == 32)
         {
             if(alive)
@@ -96,9 +97,14 @@
             {
                 godmode = true;
                 inGodMode();
+                spectrum_on = true;
+                document.getElementById("condition").innerHTML = "GOD MODE ON";
             }
-            else
+            else {
                 godmode = false;
+                spectrum_on = false;
+                document.getElementById("condition").innerHTML = "GOD MODE OFF";
+            }
         }
 
         if (currentlyPressedKeys[114] || currentlyPressedKeys[82])
