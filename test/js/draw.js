@@ -5,9 +5,9 @@
             var num1 = Math.random() * 14 - 7;
             var num2 = -Math.random() * 60;
             while (num2 > -10)
-                num2 = -Math.random() * 30;
-            X[i] = num1;
-            Z[i] = num2;
+                num2 = -Math.random() * 60;
+            X.push(num1);
+            Z.push(num2);
         }
     }
 
@@ -18,7 +18,7 @@
             X.splice(0, difficulty);
             Z.splice(0, difficulty);
         }
-        for (var i = difficulty; i < difficulty * 2; i++) {
+        for (var i = 0; i < difficulty; i++) {
             var num1 = Math.random() * 14 - 7;
             var num2 = -Math.random() * 30 - 30;
             X.push(num1);
