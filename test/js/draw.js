@@ -102,15 +102,21 @@
         }
     }
 
+var planeScale=0;
+
     function drawPlane(mv) {
         mat4.identity(mv);
 
         mat4.translate(mv, [-xPos, -.7, -1]);
 
+        if (planeScale < 10)
+        {
+               planeScale =+0.01
+        }
 
         mvPushMatrix();
 
-        mat4.scale(mv, [7.3, 0.01, 60]);
+        mat4.scale(mv, [.73*planeScale, 0.01, 6.0*planeScale]);
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
