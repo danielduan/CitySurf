@@ -73,6 +73,7 @@ function webGLStart() {
     initBuffers();
     initTexture();
     fillXZ();
+    initAudio();
     gl.clearColor(0.0, 0.0, 0.0, 0.2);
     gl.enable(gl.DEPTH_TEST);
     document.onkeydown = handleKeyDown;
@@ -81,6 +82,7 @@ function webGLStart() {
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
             pushRestart();
+            playMain();
             pause = false;
         });
     tick();
@@ -152,4 +154,5 @@ function pushRestart() {
     document.getElementById("points").style.display = "block";
     document.getElementById("map").style.display = "block";
     document.getElementById("footer").style.display = "none";
+    playMain();
 };
