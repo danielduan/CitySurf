@@ -111,7 +111,8 @@ var planeScale=0;
 
         if (planeScale < 10)
         {
-               planeScale =+0.01
+               planeScale += 0.1;
+               console.log(planeScale);
         }
 
         mvPushMatrix();
