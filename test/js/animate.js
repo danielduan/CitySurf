@@ -69,10 +69,12 @@ function map() {
             dataType: 'jsonp', // Pay attention to the dataType/contentType
             success: function (data) {
                 total = data.resourceSets[0].estimatedTotal;
-                if (total == 0)
+                if (total == 0 || total == 1 || total == 2)
                     difficulty = 30;
+                else if (total == 3)
+                    difficulty = 40;
                 else
-                    difficulty = total * 20;
+                    difficulty = total * 10;
             }
         });
     if (ind < 20){
