@@ -12,8 +12,8 @@
     }
 
     function refillXZ() {
-        console.log("splicing 0-" + difficulty + " wave: " + wave);
-        console.log("Length " + X.length);
+        //console.log("splicing 0-" + difficulty + " wave: " + wave);
+        //console.log("Length " + X.length);
         if (X.length > 250) {
             X.splice(0, difficulty);
             Z.splice(0, difficulty);
