@@ -14,15 +14,13 @@
     function refillXZ() {
         console.log("splicing 0-" + difficulty + " wave: " + wave);
         console.log("Length " + X.length);
-        if (X.length > 100) {
+        if (X.length > 250) {
             X.splice(0, difficulty);
             Z.splice(0, difficulty);
         }
         for (var i = 0; i < difficulty; i++) {
-            var num1 = Math.random() * 14 - 7;
-            var num2 = -Math.random() * 30 - 30;
-            X.push(num1);
-            Z.push(num2);
+            X[X.length] = Math.random() * 14 - 7;
+            Z[Z.length] = -Math.random() * 30 - 30;
         }
     }
 
