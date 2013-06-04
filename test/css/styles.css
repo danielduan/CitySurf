@@ -49,6 +49,10 @@ cursor: hand;
 cursor: pointer;
 }
 
+#play_button {
+	visibility: hidden;
+}
+
 #status {
 	color:#18CAE6;
 }

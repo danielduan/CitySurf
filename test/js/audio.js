@@ -11,10 +11,12 @@ function loadSample(url) {
     request.responseType = "arraybuffer";
 
     request.onload = function () {
-        source.buffer = context.createBuffer(request.response, false);
-        source.loop = true;
-        source.noteOn(0);
-        visualizer(); // run jsfft visualizer
+            source.buffer = context.createBuffer(request.response, false);
+            source.loop = true;
+            source.noteOn(0);
+            visualizer();
+            loadMain();
+         // run jsfft visualizer
         //document.getElementById("status").innerHTML = "Loading Complete";
     }
 
@@ -25,7 +27,7 @@ var mainsong;
 
 function loadMain() {
     // Load asynchronously
-    var url = "audio/thecity.mp3";
+    var url = "audio/thisiswhatitfeelslike.mp3";
 
     var request = new XMLHttpRequest();
     request.open("GET", url, true);
@@ -34,6 +36,7 @@ function loadMain() {
     request.onload = function () {
         mainsong = context.createBuffer(request.response, false);
         document.getElementById("status").innerHTML = "Loading Complete";
+        document.getElementById("play_button").style.visibility = "visible";
     }
 
     request.send();
@@ -64,6 +67,8 @@ function initAudio() {
     // Connect the processing graph: source -> jsProcessor -> analyser -> destination
     source.connect(jsProcessor);
     jsProcessor.connect(context.destination);
+
+    loadmusic();
 
     // Load the sample buffer for the audio source
     //loadSample("greyhound.m4a");
