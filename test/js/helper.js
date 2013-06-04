@@ -10,12 +10,10 @@
                 godmode = true;
                 inGodMode();
                 spectrum_on = true;
-                document.getElementById("condition").innerHTML = "GOD MODE ON";
             }
             else {
                 godmode = false;
                 spectrum_on = false;
-                document.getElementById("condition").innerHTML = "GOD MODE OFF";
             }
         }
 
