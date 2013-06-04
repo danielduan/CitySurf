@@ -1,9 +1,9 @@
     //Randomly generate coordinates (X and Z) for cubes
 
     function fillXZ() {
-        for (var i = difficulty; i < difficulty * 2; i++) {
+        for (var i = 0; i < difficulty; i++) {
             var num1 = Math.random() * 14 - 7;
-            var num2 = -Math.random() * 30;
+            var num2 = -Math.random() * 60;
             while (num2 > -10)
                 num2 = -Math.random() * 30;
             X[i] = num1;
@@ -12,20 +12,24 @@
     }
 
     function refillXZ() {
-        X.splice(0, difficulty);
-        Z.splice(0, difficulty);
+        console.log("splicing 0-" + difficulty + " wave: " + wave);
+        console.log("Length " + X.length);
+        if (X.length > 100) {
+            X.splice(0, difficulty);
+            Z.splice(0, difficulty);
+        }
         for (var i = difficulty; i < difficulty * 2; i++) {
             var num1 = Math.random() * 14 - 7;
             var num2 = -Math.random() * 30 - 30;
-            X[i] = num1;
-            Z[i] = num2;
+            X.push(num1);
+            Z.push(num2);
         }
     }
 
     //draw cubes
 
     function drawCubes(mv) {
-        for (var i = 0; i < difficulty * 2; i++) {
+        for (var i = 0; i < Z.length; i++) {
             mat4.identity(mv);
             Z[i] += mph;
             var extra = mph;

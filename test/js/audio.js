@@ -15,10 +15,35 @@ function loadSample(url) {
         source.loop = true;
         source.noteOn(0);
         visualizer(); // run jsfft visualizer
+        //document.getElementById("status").innerHTML = "Loading Complete";
+    }
+
+    request.send();
+}
+
+var mainsong;
+
+function loadMain() {
+    // Load asynchronously
+    var url = "audio/thecity.mp3";
+
+    var request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    request.responseType = "arraybuffer";
+
+    request.onload = function () {
+        mainsong = context.createBuffer(request.response, false);
         document.getElementById("status").innerHTML = "Loading Complete";
     }
 
     request.send();
+}
+
+function playMain() {
+    source.buffer = mainsong;
+    source.loop = true;
+    source.noteOn(0);
+    visualizer(); // run jsfft visualizer
 }
 
 var canvas, ctx;
