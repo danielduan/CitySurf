@@ -49,6 +49,10 @@ function playMain() {
     visualizer(); // run jsfft visualizer
 }
 
+function pauseMusic() {
+    //source.noteOff(0);
+}
+
 var canvas, ctx;
 
 function initAudio() {

@@ -50,8 +50,8 @@ var alive = true;
 var joggingAngle = 0;
 var lastTime = 0;
 var latitude = 34.068921;
-var latincrement = -0.003;
-var longincrement = 0.0058;
+var latincrement = -0.0005;
+var longincrement = 0.005;
 var longitude = -118.445181;
 //var maps = new Array();
 var count = 0;
@@ -93,6 +93,7 @@ function webGLStart() {
     document.getElementById("mapimage").style.height = window.innerHeight * 0.3;
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
+            pauseMusic();
             pushRestart();
             playMain();
             initMap();
