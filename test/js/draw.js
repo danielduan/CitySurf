@@ -130,10 +130,11 @@ var dropDistance = 20;
             mph += .008;
         }
 
-        dropDistance -= (20 - dropDistance) * 0.5;
+        dropDistance -= ((20 - dropDistance) + 2) * mph;
         if (dropDistance < 0) {
             dropDistance = 0;
         }
+        console.log(dropDistance);
     }
 
     function drawPlane(mv) {
