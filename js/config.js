@@ -49,25 +49,32 @@ var alive = true;
 // Used to make us "jog" up and down as we move forward.
 var joggingAngle = 0;
 var lastTime = 0;
-var latitude = 34.072;
-var longitude = -118.445;
-var maps = new Array();
+var latitude = 34.068921;
+var latincrement = -0.003;
+var longincrement = 0.0058;
+var longitude = -118.445181;
+//var maps = new Array();
 var count = 0;
 var godmode = false;
 var total = 0;
+var cubeTrans = new Array();
 //start webGL service
 
 function webGLStart() {
-    for (var i = 0; i < 20; i++) {
-        maps[i] = new Image();
-        if (i < 10)
-            maps[i].src = "img/maps/" + "0"  + i + ".png";
-        else
-            maps[i].src = "img/maps/" + i + ".png";
-    }
+    //for (var i = 0; i < 20; i++) {
+    //    maps[i] = new Image();
+    //    if (i < 10)
+    //        maps[i].src = "img/maps/" + "0"  + i + ".png";
+    //    else
+    //        maps[i].src = "img/maps/" + i + ".png";
+    //}
     var canvas = document.getElementById("cube-runner");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    if (window.innerWidth < 1000) {
+        document.getElementById("points").style.width = window.innerWidth*0.6;
+        document.getElementById("points").style.fontSize = window.innerWidth/40;
+    }
     if (BrowserDetect.browser != "Chrome") {
         document.getElementById("status").innerHTML = "Please use Google Chrome";
     }
@@ -82,11 +89,13 @@ function webGLStart() {
     
     document.onkeydown = handleKeyDown;
     document.onkeyup = handleKeyUp;
-    document.getElementById("mapimage").width = window.innerWidth * 0.15;
+    document.getElementById("mapimage").style.width = window.innerWidth * 0.3;
+    document.getElementById("mapimage").style.height = window.innerHeight * 0.3;
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
             pushRestart();
             playMain();
+            initMap();
             pause = false;
         });
     tick();
@@ -98,7 +107,7 @@ function isDead() {
     document.getElementById("menu").style.display = "block";
     document.getElementById("status").innerHTML = "Game Over";
     document.getElementById("points").style.display = "none";
-    document.getElementById("map").style.display = "none";
+    document.getElementById("mapimage").style.display = "none";
     document.getElementById("footer").style.display = "block";
     document.getElementById("play_button").innerHTML = "Restart";
     document.getElementById("play_button").addEventListener('click', function (event) {
@@ -158,7 +167,7 @@ function inGodMode() {};
 function pushRestart() {
     playMain();
     document.getElementById("points").style.display = "block";
-    document.getElementById("map").style.display = "block";
+    document.getElementById("mapimage").style.display = "block";
     document.getElementById("footer").style.display = "none";
     document.getElementById("menu").style.display = "none";
 };

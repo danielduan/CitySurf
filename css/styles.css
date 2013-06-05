@@ -41,7 +41,7 @@ width:80px;
 height:25px;
 background-color:rgba(0,0,0,0.5);
 border:3px solid #18CAE6;
-border-radius:1	px;
+border-radius:1px;
 font-size:14px;
 font-weight:700;
 color:#fff;
@@ -58,12 +58,16 @@ cursor: pointer;
 }
 
 #footer {
-width:800px;
+width:700px;
 top:90%;
 left:50%;
 text-align:center;
-margin:-8px 0 0 -400px;
+margin:-8px 0 0 -350px;
 background-color:rgba(0,0,0,0.5);
+}
+
+#footer p {
+font-size: 14px;
 }
 
 #facebook {
@@ -79,8 +83,8 @@ background-color:rgba(0,0,0,0.5);
 position:absolute;
 width:580px;
 height:20px;
-top:20px;
-right:80px;
+top:10px;
+right:10px;
 border:3px solid #18CAE6;
 border-radius:1px;
 background-color:rgba(0,0,0,0.7);
@@ -106,15 +110,18 @@ padding:12px;
 }
 
 #mapimage {
-	margin-top:10px;
-	margin-left:10px;
-	border: 1px solid #ddd;
-	opacity:0.7;
-	filter:alpha(opacity=70);
-}
-
-#map {
 	position:absolute;
 	z-index:-1;
-	display:none;
+	/*display:none;*/
+	background-color: rgba(0,0,0,0);
+	margin-top:10px;
+	margin-left:10px;
+	background-color: rgba(0,0,0,0);
+	/*
+	border:3px solid #18CAE6;
+	border-radius:1px;
+
+	opacity:0.8;
+	filter:alpha(opacity=70);
+	*/
 }

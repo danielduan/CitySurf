@@ -12,6 +12,7 @@
 <link href='http://fonts.googleapis.com/css?family=Orbitron:700,400' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script type="text/javascript" src="js/glMatrix-0.9.5.min.js"></script>
 <script type="text/javascript" src="js/webgl-utils.js"></script>
 <script type="text/javascript" src="js/init.js"></script>
@@ -77,8 +78,7 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <!--end facebook-->
 
-<div id="map">
-    <img src="img/maps/00.png" id="mapimage">
+<div id="mapimage">
 </div>
 
 <div id="menu" class="osd">

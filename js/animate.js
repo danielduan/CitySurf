@@ -1,3 +1,59 @@
+var gmap;
+google.maps.visualRefresh = true;
+var MY_MAPTYPE_ID = 'custom_style';
+
+var featureOpts = [
+    {
+      stylers: [
+        { hue: '#18CAE6' },
+        { visibility: 'simplified' },
+        { gamma: 0.2 },
+        { lightness: 10 },
+        { weight: 0.5 }
+      ]
+    },
+    {
+      elementType: 'labels',
+      stylers: [
+        { visibility: 'on' }
+      ]
+    }
+  ];
+
+function initMap() {
+  var mapOptions = {
+    backgroundColor: "rgba(0,0,0,0)",
+    zoom: 13,
+    scrollwheel: false,
+    navigationControl: false,
+    mapTypeControl: false,
+    scaleControl: false,
+    streetViewControl: false,
+    draggable: false,
+    center: new google.maps.LatLng(latitude, longitude),
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.HYBRID, MY_MAPTYPE_ID]
+    },
+    mapTypeId: MY_MAPTYPE_ID
+  };
+  gmap = new google.maps.Map(document.getElementById('mapimage'),
+      mapOptions);
+
+  var trafficLayer = new google.maps.TrafficLayer();
+  trafficLayer.setMap(gmap);
+
+  var styledMapOptions = {
+    name: 'CitySurf'
+  };
+
+  var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+
+  gmap.mapTypes.set(MY_MAPTYPE_ID, customMapType);
+
+  //console.log("map load");
+}
+
+
 function animate() {
     var timeNow = new Date().getTime();
     if (lastTime != 0) {
@@ -33,9 +89,9 @@ function tick() {
 
     var message;
 
-    if (total < 6) {
+    if (total < 4) {
         message = "light";
-    } else if (total < 12) {
+    } else if (total < 8) {
         message = "moderate";
     } else {
         message = "severe";
@@ -47,9 +103,14 @@ function tick() {
 }
 
 function map() {
-    var ind = Math.floor(zcount / 100);
-    latitude -= 0.003;
-    longitude += 0.0058;
+    
+    //var ind = Math.floor(zcount / 100);
+    if (!pause) {
+        latitude += latincrement;
+        longitude += longincrement;
+        gmap.panTo(new google.maps.LatLng(latitude, longitude));
+    
+
 
     //SouthLatitude, WestLongitude, NorthLatitude, and EastLongitude values
     var SL = latitude - .1;
@@ -70,7 +131,7 @@ function map() {
             dataType: 'jsonp', // Pay attention to the dataType/contentType
             success: function (data) {
                 total = data.resourceSets[0].estimatedTotal;
-
+                //console.log(data);
                 if (total < 6)
                     difficulty = 30;
                 else
@@ -83,9 +144,11 @@ function map() {
                 //console.log("total: "+total + " difficulty: " + difficulty);
             }
         });
-    if (ind < 20){
-        document.getElementById("mapimage").src = maps[ind].src;
+
     }
+    //if (ind < 20){
+    //    document.getElementById("mapimage").src = maps[ind].src;
+    //}
     
 
 
