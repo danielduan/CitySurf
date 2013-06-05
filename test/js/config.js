@@ -93,6 +93,7 @@ function webGLStart() {
     document.getElementById("mapimage").style.height = window.innerHeight * 0.3;
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
+            pauseMusic();
             pushRestart();
             playMain();
             initMap();
