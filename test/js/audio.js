@@ -179,7 +179,7 @@ function visualizer() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (spectrum_on) {
-        ctx.fillStyle = '#004400';
+        ctx.fillStyle = '#444444';
         for (var i = 0; i < currentvalue.length; i++) {
             // Draw rectangle bars for each frequency bin
             ctx.fillRect(i * 8, canvas.height, 7, -currentvalue[i] * 3);

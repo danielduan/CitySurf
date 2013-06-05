@@ -1,3 +1,64 @@
+var gmap;
+google.maps.visualRefresh = true;
+var MY_MAPTYPE_ID = 'custom_style';
+
+var featureOpts = [
+    {
+      stylers: [
+        { hue: '#18CAE6' },
+        { visibility: 'simplified' },
+        { gamma: 0.5 },
+        { weight: 0.5 }
+      ]
+    },
+    {
+      elementType: 'labels',
+      stylers: [
+        { visibility: 'on' }
+      ]
+    },
+    {
+      featureType: 'water',
+      stylers: [
+        { color: '#000044' }
+      ]
+    }
+  ];
+
+function initialize() {
+  var mapOptions = {
+    zoom: 12,
+    scrollwheel: false,
+    navigationControl: false,
+    mapTypeControl: false,
+    scaleControl: false,
+    draggable: false,
+    center: new google.maps.LatLng(latitude, longitude),
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+    },
+    mapTypeId: MY_MAPTYPE_ID
+  };
+  gmap = new google.maps.Map(document.getElementById('mapimage'),
+      mapOptions);
+
+  var trafficLayer = new google.maps.TrafficLayer();
+  trafficLayer.setMap(gmap);
+
+  var styledMapOptions = {
+    name: 'CitySurf'
+  };
+
+  var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+
+  gmap.mapTypes.set(MY_MAPTYPE_ID, customMapType);
+
+  //console.log("map load");
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
 function animate() {
     var timeNow = new Date().getTime();
     if (lastTime != 0) {
@@ -47,9 +108,14 @@ function tick() {
 }
 
 function map() {
+    
     var ind = Math.floor(zcount / 100);
-    latitude -= 0.003;
-    longitude += 0.0058;
+    if (pause != true) {
+        latitude += latincrement;
+        longitude += longincrement;
+    }
+
+    gmap.panTo(new google.maps.LatLng(latitude, longitude));
 
     //SouthLatitude, WestLongitude, NorthLatitude, and EastLongitude values
     var SL = latitude - .1;

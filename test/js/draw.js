@@ -107,12 +107,12 @@
     function drawPlane(mv) {
         mat4.identity(mv);
 
-        mat4.translate(mv, [-xPos, -.8, -1]);
+        mat4.translate(mv, [-xPos, -.7, -1]);
 
-        if (planeScale < 10)
+        if (planeScale < 9.98)
         {
                planeScale += 0.2;
-               console.log(planeScale);
+               //console.log(planeScale);
         }
 
         mvPushMatrix();
