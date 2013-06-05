@@ -50,7 +50,7 @@ function playMain() {
 }
 
 function pauseMusic() {
-    source.pause();
+    //source.noteOff(0);
 }
 
 var canvas, ctx;
