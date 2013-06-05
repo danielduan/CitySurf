@@ -1,5 +1,8 @@
     //Randomly generate coordinates (X and Z) for cubes
 
+var dropCount = 0;
+var dropDistance = 20;
+
     function fillXZ() {
         for (var i = 0; i < difficulty; i++) {
             var num1 = Math.random() * 14 - 7;
@@ -25,6 +28,8 @@
             Z[Z.length] = -Math.random() * 30 - 30;
             //cubeTrans[cubeTrans.length] = 20;
         }
+        dropCount = difficulty;
+        dropDistance = dropDistance;
     }
 
     var planeScale=0;
@@ -56,7 +61,11 @@
             else if (cubeTrans[i] > -0.4)
                 cubeTrans[i] -= mph * 4;*/
             
-            mat4.translate(mv, [X[i] - xPos, (9-planeScale) * 0.4, Z[i]]);
+            if (dropCount + i >= Z.length) {
+                mat4.translate(mv, [X[i] - xPos, (9-planeScale) * 0.4 + dropDistance, Z[i]]);
+            } else {
+                mat4.translate(mv, [X[i] - xPos, (9-planeScale) * 0.4, Z[i]]);
+            }
 
             mvPushMatrix();
             mat4.scale(mv, [.3, .3, .3]);
@@ -119,6 +128,11 @@
             refillXZ();
             zbottom += 100;
             mph += .008;
+        }
+
+        dropDistance -= (20 - dropDistance) * 0.5;
+        if (dropDistance < 0) {
+            dropDistance = 0;
         }
     }
 
