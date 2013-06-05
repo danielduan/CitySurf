@@ -8,7 +8,7 @@
                 num2 = -Math.random() * 60;
             X.push(num1);
             Z.push(num2);
-            cubeTrans.push(-0.4);
+            //cubeTrans.push(-0.4);
         }
     }
 
@@ -18,12 +18,12 @@
         if (X.length > 250) {
             X.splice(0, difficulty);
             Z.splice(0, difficulty);
-            cubeTrans.splice(0, difficulty);
+            //cubeTrans.splice(0, difficulty);
         }
         for (var i = 0; i < difficulty; i++) {
             X[X.length] = Math.random() * 14 - 7;
             Z[Z.length] = -Math.random() * 30 - 30;
-            cubeTrans[cubeTrans.length] = 20;
+            //cubeTrans[cubeTrans.length] = 20;
         }
     }
 
@@ -50,12 +50,13 @@
                 xPos = -6.9;
             if (xPos > 6.9)
                 xPos = 6.9;
+            /*
             if (cubeTrans[i] < -0.2)
                 cubeTrans[i] = -0.4;
             else if (cubeTrans[i] > -0.4)
-                cubeTrans[i] -= mph * 4;
+                cubeTrans[i] -= mph * 4;*/
             
-            mat4.translate(mv, [X[i] - xPos, (planeScale-9) * cubeTrans[i], Z[i]]);
+            mat4.translate(mv, [X[i] - xPos, (9-planeScale) * 0.4, Z[i]]);
 
             mvPushMatrix();
             mat4.scale(mv, [.3, .3, .3]);
