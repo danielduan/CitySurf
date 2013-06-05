@@ -27,7 +27,7 @@ var mainsong;
 
 function loadMain() {
     // Load asynchronously
-    var url = "audio/thisiswhatitfeelslike.mp3";
+    var url = "audio/greyhound.mp3";
 
     var request = new XMLHttpRequest();
     request.open("GET", url, true);

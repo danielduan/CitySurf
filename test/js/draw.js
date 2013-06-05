@@ -103,6 +103,7 @@
             gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
 
         }
+        /*
         var avgSpectrum = 0;
          for (var i = 0; i < currentvalue.length; i++)
             avgSpectrum += currentvalue[i];
@@ -110,12 +111,13 @@
         mph = Math.ceil(avgSpectrum/10)/50;
         if (mph < 0.1)
             mph = 0.1;
+        */
         zcount += mph;
         if (zcount >= wave * 30 + 15) {
             wave += 1;
             refillXZ();
             zbottom += 100;
-            //mph += .008;
+            mph += .008;
         }
     }
 
