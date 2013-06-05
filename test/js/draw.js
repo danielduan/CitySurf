@@ -134,7 +134,7 @@ var dropDistance = 20;
         if (dropDistance < 0) {
             dropDistance = 0;
         }
-        console.log(dropDistance);
+        //console.log(dropDistance);
     }
 
     function drawPlane(mv) {

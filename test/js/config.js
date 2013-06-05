@@ -91,6 +91,7 @@ function webGLStart() {
             event.preventDefault();
             pushRestart();
             playMain();
+            initMap();
             pause = false;
         });
     tick();

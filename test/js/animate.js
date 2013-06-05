@@ -20,10 +20,10 @@ var featureOpts = [
     }
   ];
 
-function initialize() {
+function initMap() {
   var mapOptions = {
     backgroundColor: "rgba(0,0,0,0)",
-    zoom: 12,
+    zoom: 13,
     scrollwheel: false,
     navigationControl: false,
     mapTypeControl: false,
@@ -39,8 +39,8 @@ function initialize() {
   gmap = new google.maps.Map(document.getElementById('mapimage'),
       mapOptions);
 
-  //var trafficLayer = new google.maps.TrafficLayer();
-  //trafficLayer.setMap(gmap);
+  var trafficLayer = new google.maps.TrafficLayer();
+  trafficLayer.setMap(gmap);
 
   var styledMapOptions = {
     name: 'CitySurf'
@@ -52,8 +52,6 @@ function initialize() {
 
   //console.log("map load");
 }
-
-google.maps.event.addDomListener(window, 'load', initialize);
 
 
 function animate() {
@@ -91,9 +89,9 @@ function tick() {
 
     var message;
 
-    if (total < 6) {
+    if (total < 4) {
         message = "light";
-    } else if (total < 12) {
+    } else if (total < 8) {
         message = "moderate";
     } else {
         message = "severe";
@@ -106,13 +104,13 @@ function tick() {
 
 function map() {
     
-    var ind = Math.floor(zcount / 100);
+    //var ind = Math.floor(zcount / 100);
     if (!pause) {
         latitude += latincrement;
         longitude += longincrement;
-    }
+        gmap.panTo(new google.maps.LatLng(latitude, longitude));
+    
 
-    gmap.panTo(new google.maps.LatLng(latitude, longitude));
 
     //SouthLatitude, WestLongitude, NorthLatitude, and EastLongitude values
     var SL = latitude - .1;
@@ -133,7 +131,7 @@ function map() {
             dataType: 'jsonp', // Pay attention to the dataType/contentType
             success: function (data) {
                 total = data.resourceSets[0].estimatedTotal;
-
+                console.log(data);
                 if (total < 6)
                     difficulty = 30;
                 else
@@ -146,6 +144,8 @@ function map() {
                 //console.log("total: "+total + " difficulty: " + difficulty);
             }
         });
+
+    }
     //if (ind < 20){
     //    document.getElementById("mapimage").src = maps[ind].src;
     //}
