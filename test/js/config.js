@@ -143,6 +143,8 @@ function isDead() {
                 lightDirectionX = 0.0;
                 lightDirectionY = 0.0;
                 lightDirectionZ = 0.0;
+                latitude = 34.068921;
+                longitude = -118.445181;
                 directionR = 0.8;
                 directionG = 0.8;
                 directionB = 0.8;

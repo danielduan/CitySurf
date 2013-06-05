@@ -38,7 +38,8 @@
                 speed = 0;
 
                 godmode = false;
-
+                latitude = 34.068921;
+                longitude = -118.445181;
                 pause = false;
                 zGreatest = 0;
                 rPyramid = 0;
