@@ -131,7 +131,7 @@ function map() {
             dataType: 'jsonp', // Pay attention to the dataType/contentType
             success: function (data) {
                 total = data.resourceSets[0].estimatedTotal;
-                console.log(data);
+                //console.log(data);
                 if (total < 6)
                     difficulty = 30;
                 else

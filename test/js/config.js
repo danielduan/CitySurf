@@ -71,6 +71,10 @@ function webGLStart() {
     var canvas = document.getElementById("cube-runner");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    if (window.innerWidth < 1000) {
+        document.getElementById("points").style.width = window.innerWidth*0.6;
+        document.getElementById("points").style.fontSize = window.innerWidth/40;
+    }
     if (BrowserDetect.browser != "Chrome") {
         document.getElementById("status").innerHTML = "Please use Google Chrome";
     }
