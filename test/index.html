@@ -4,8 +4,8 @@
 <meta property="fb:app_id" content="515304461857778"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="http://citysurf.herokuapp.com/"/>
-<meta property="og:image" content="http://citysurf.herokuapp.com/icon.png"/>
-<link rel="shortcut icon" href="http://citysurf.herokuapp.com/icon.ico"/>
+<meta property="og:image" content="http://citysurf.herokuapp.com/img/icon.png"/>
+<link rel="shortcut icon" href="http://citysurf.herokuapp.com/img/icon.ico"/>
 <meta name="description" property="og:description" content="An interactive game to visualize local traffic condition in Los Angeles."/>
 <title>CitySurf</title>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
