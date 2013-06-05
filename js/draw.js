@@ -8,6 +8,7 @@
                 num2 = -Math.random() * 60;
             X.push(num1);
             Z.push(num2);
+            cubeTrans.push(-0.4);
         }
     }
 
@@ -21,6 +22,7 @@
         for (var i = 0; i < difficulty; i++) {
             X[X.length] = Math.random() * 14 - 7;
             Z[Z.length] = -Math.random() * 30 - 30;
+            cubeTrans[cubeTrans.length] = 20;
         }
     }
 
@@ -47,8 +49,12 @@
                 xPos = -6.9;
             if (xPos > 6.9)
                 xPos = 6.9;
+            if (cubeTrans[i] < -0.2)
+                cubeTrans[i] = -0.4;
+            else if (cubeTrans[i] > -0.4)
+                cubeTrans[i] -= mph * 4;
+                mat4.translate(mv, [X[i] - xPos, (planeScale-9) * cubeTrans[i], Z[i]]);
 
-            mat4.translate(mv, [X[i] - xPos, (9-planeScale)*.4, Z[i]]);
             mvPushMatrix();
             mat4.scale(mv, [.3, .3, .3]);
             gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
@@ -95,12 +101,19 @@
             gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
 
         }
+        var avgSpectrum = 0;
+         for (var i = 0; i < currentvalue.length; i++)
+            avgSpectrum += currentvalue[i];
+        avgSpectrum = avgSpectrum / currentvalue.length;
+        mph = Math.ceil(avgSpectrum/10)/50;
+        if (mph < 0.1)
+            mph = 0.1;
         zcount += mph;
         if (zcount >= wave * 30 + 15) {
             wave += 1;
             refillXZ();
             zbottom += 100;
-            mph += .008;
+            //mph += .008;
         }
     }
 
