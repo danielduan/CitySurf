@@ -7,7 +7,8 @@ var featureOpts = [
       stylers: [
         { hue: '#18CAE6' },
         { visibility: 'simplified' },
-        { gamma: 0.5 },
+        { gamma: 0.2 },
+        { lightness: 10 },
         { weight: 0.5 }
       ]
     },
@@ -16,26 +17,22 @@ var featureOpts = [
       stylers: [
         { visibility: 'on' }
       ]
-    },
-    {
-      featureType: 'water',
-      stylers: [
-        { color: '#000044' }
-      ]
     }
   ];
 
 function initialize() {
   var mapOptions = {
+    backgroundColor: "rgba(0,0,0,0)",
     zoom: 12,
     scrollwheel: false,
     navigationControl: false,
     mapTypeControl: false,
     scaleControl: false,
+    streetViewControl: false,
     draggable: false,
     center: new google.maps.LatLng(latitude, longitude),
     mapTypeControlOptions: {
-      mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+      mapTypeIds: [google.maps.MapTypeId.HYBRID, MY_MAPTYPE_ID]
     },
     mapTypeId: MY_MAPTYPE_ID
   };

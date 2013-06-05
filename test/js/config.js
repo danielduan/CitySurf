@@ -84,11 +84,10 @@ function webGLStart() {
     
     document.onkeydown = handleKeyDown;
     document.onkeyup = handleKeyUp;
-    document.getElementById("mapimage").style.width = window.innerWidth * 0.15;
+    document.getElementById("mapimage").style.width = window.innerWidth * 0.3;
     document.getElementById("mapimage").style.height = window.innerHeight * 0.3;
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
-            document.getElementById("mapimage").style.backgroundColor = "rgba(0,0,0,0)";
             pushRestart();
             playMain();
             pause = false;
