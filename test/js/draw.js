@@ -29,7 +29,7 @@ var dropDistance = 20;
             //cubeTrans[cubeTrans.length] = 20;
         }
         dropCount = difficulty;
-        dropDistance = dropDistance;
+        dropDistance = 20;
     }
 
     var planeScale=0;
