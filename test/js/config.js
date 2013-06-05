@@ -57,6 +57,7 @@ var longitude = -118.445181;
 var count = 0;
 var godmode = false;
 var total = 0;
+var cubeTrans = new Array();
 //start webGL service
 
 function webGLStart() {
