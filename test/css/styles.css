@@ -58,12 +58,16 @@ cursor: pointer;
 }
 
 #footer {
-width:800px;
+width:700px;
 top:90%;
 left:50%;
 text-align:center;
-margin:-8px 0 0 -400px;
+margin:-8px 0 0 -350px;
 background-color:rgba(0,0,0,0.5);
+}
+
+#footer p {
+font-size: 14px;
 }
 
 #facebook {
@@ -111,8 +115,8 @@ padding:12px;
 	display:none;
 	margin-top:10px;
 	margin-left:10px;
-	border:3px solid #18CAE6;
-	border-radius:1px;
-	opacity:0.7;
+	/*border:3px solid #18CAE6;
+	border-radius:1px;*/
+	opacity:0.8;
 	filter:alpha(opacity=70);
 }
