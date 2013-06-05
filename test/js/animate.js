@@ -42,8 +42,8 @@ function initialize() {
   gmap = new google.maps.Map(document.getElementById('mapimage'),
       mapOptions);
 
-  var trafficLayer = new google.maps.TrafficLayer();
-  trafficLayer.setMap(gmap);
+  //var trafficLayer = new google.maps.TrafficLayer();
+  //trafficLayer.setMap(gmap);
 
   var styledMapOptions = {
     name: 'CitySurf'
@@ -110,7 +110,8 @@ function tick() {
 function map() {
     
     var ind = Math.floor(zcount / 100);
-    if (pause != true) {
+    if (!pause) {
+        //console.log(latitude);
         latitude += latincrement;
         longitude += longincrement;
     }
@@ -149,9 +150,9 @@ function map() {
                 //console.log("total: "+total + " difficulty: " + difficulty);
             }
         });
-    if (ind < 20){
-        document.getElementById("mapimage").src = maps[ind].src;
-    }
+    //if (ind < 20){
+    //    document.getElementById("mapimage").src = maps[ind].src;
+    //}
     
 
 
