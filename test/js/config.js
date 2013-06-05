@@ -49,24 +49,24 @@ var alive = true;
 // Used to make us "jog" up and down as we move forward.
 var joggingAngle = 0;
 var lastTime = 0;
-var latitude = 34.072;
+var latitude = 34.068921;
 var latincrement = -0.003;
 var longincrement = 0.0058;
-var longitude = -118.445;
-var maps = new Array();
+var longitude = -118.445181;
+//var maps = new Array();
 var count = 0;
 var godmode = false;
 var total = 0;
 //start webGL service
 
 function webGLStart() {
-    for (var i = 0; i < 20; i++) {
-        maps[i] = new Image();
-        if (i < 10)
-            maps[i].src = "img/maps/" + "0"  + i + ".png";
-        else
-            maps[i].src = "img/maps/" + i + ".png";
-    }
+    //for (var i = 0; i < 20; i++) {
+    //    maps[i] = new Image();
+    //    if (i < 10)
+    //        maps[i].src = "img/maps/" + "0"  + i + ".png";
+    //    else
+    //        maps[i].src = "img/maps/" + i + ".png";
+    //}
     var canvas = document.getElementById("cube-runner");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -88,6 +88,7 @@ function webGLStart() {
     document.getElementById("mapimage").style.height = window.innerHeight * 0.3;
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
+            document.getElementById("mapimage").style.backgroundColor = "rgba(0,0,0,0)";
             pushRestart();
             playMain();
             pause = false;
