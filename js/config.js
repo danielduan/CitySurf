@@ -55,7 +55,6 @@ var maps = new Array();
 var count = 0;
 var godmode = false;
 var total = 0;
-var cubeTrans = new Array();
 //start webGL service
 
 function webGLStart() {
