@@ -108,7 +108,6 @@ function map() {
     
     var ind = Math.floor(zcount / 100);
     if (!pause) {
-        //console.log(latitude);
         latitude += latincrement;
         longitude += longincrement;
     }
