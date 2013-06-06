@@ -191,9 +191,9 @@ function visualizer() {
         for (var i = 0; i < currentvalue.length; i++) {
             // Draw rectangle bars for each frequency bin
             ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(i * canvasWidth, canvas.height-maxvalue[i], canvasWidth, -5);
+            ctx.fillRect(i * canvasWidth, canvas.height-maxvalue[i]*2, canvasWidth, -5);
             ctx.fillStyle = '#444444';
-            ctx.fillRect(i * canvasWidth, canvas.height, canvasWidth, -currentvalue[i] * 3);
+            ctx.fillRect(i * canvasWidth, canvas.height, canvasWidth, -currentvalue[i]*2);
         }
     }
 
