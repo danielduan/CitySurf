@@ -45,6 +45,9 @@ function loadMain() {
 function playMain() {
     source.buffer = context.createBuffer(mainsong, false);
     source.loop = true;
+    for (var i = 0; i < maxvalue.length; i++) {
+        maxvalue[i] = 0;
+    }
     source.noteOn(0);
     visualizer(); // run jsfft visualizer
 }
@@ -154,7 +157,7 @@ function audioAvailable(event) {
             new_pos(canvas.width / 2 - i * 4 + 4, (canvas.height / 2) + magnitude + 20);
         } else {
             if (maxvalue[i] > 10) {
-                maxvalue[i]--;
+                maxvalue[i]-=1.5;
             }
         }
 
@@ -184,9 +187,13 @@ function visualizer() {
 
     if (spectrum_on) {
         ctx.fillStyle = '#444444';
+        var canvasWidth = canvas.width/128;
         for (var i = 0; i < currentvalue.length; i++) {
             // Draw rectangle bars for each frequency bin
-            ctx.fillRect(i * 8, canvas.height, 7, -currentvalue[i] * 3);
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(i * canvasWidth, canvas.height-maxvalue[i], canvasWidth, -5);
+            ctx.fillStyle = '#444444';
+            ctx.fillRect(i * canvasWidth, canvas.height, canvasWidth, -currentvalue[i] * 3);
         }
     }
 
