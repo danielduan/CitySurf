@@ -53,11 +53,13 @@ function initMap() {
   //console.log("map load");
 }
 
-
 function animate() {
     var timeNow = new Date().getTime();
     if (lastTime != 0) {
         var elapsed = timeNow - lastTime;
+
+        //speed += leapRotate / 600;
+        speed -= leapPosition / 50000;
 
         if (speed != 0) {
             xPos -= speed * elapsed;
@@ -66,7 +68,6 @@ function animate() {
     }
     lastTime = timeNow;
 }
-
 
 function tick() {
     requestAnimFrame(tick);

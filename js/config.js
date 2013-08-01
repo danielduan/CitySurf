@@ -34,6 +34,8 @@ var zcount = 0;
 var ambientR = 1.0;
 var ambientG = 1.0;
 var ambientB = 1.0;
+var leapRotate = 0;
+var leapPosition = 0;
 var lightDirectionX = 0.0;
 var lightDirectionY = 0.0;
 var lightDirectionZ = 0.0;
@@ -58,6 +60,7 @@ var count = 0;
 var godmode = false;
 var total = 0;
 var cubeTrans = new Array();
+var previousFrame;
 //start webGL service
 
 function resize() {
@@ -113,6 +116,24 @@ function webGLStart() {
             pause = false;
         });
     tick();
+
+    var controllerOptions = {enableGestures: false};
+    Leap.loop(controllerOptions, function(frame) {
+      if (pause) {
+        return; // Skip this update
+      }
+
+      // Display Hand object data
+        if (frame.hands[0] && previousFrame) {
+            //leapRotate = frame.hands[0].rotationAxis(previousFrame, 2)[2];
+            leapPosition = frame.hands[0].palmPosition[0];
+        } else {
+            //leapRotate = 0;
+            leapPosition = 0;
+        }
+
+        previousFrame = frame;
+    });
 }
 
 function isPaused() {};
