@@ -24,6 +24,7 @@
 <script type="text/javascript" src="js/animate.js"></script>
 <script type="text/javascript" src="js/dsp.js"></script>
 <script type="text/javascript" src="js/audio.js"></script>
+<script type="text/javascript" src="js/leap.js"></script>
 <script id="shader-fs" type="x-shader/x-fragment">
     precision mediump float;
     varying vec2 vTextureCoord;

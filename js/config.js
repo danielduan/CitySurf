@@ -60,6 +60,20 @@ var total = 0;
 var cubeTrans = new Array();
 //start webGL service
 
+function resize() {
+    var canvas = document.getElementById("cube-runner");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    document.getElementById("mapimage").style.width = window.innerWidth * 0.3;
+    document.getElementById("mapimage").style.height = window.innerHeight * 0.3;
+
+    if (window.innerWidth < 1000) {
+        document.getElementById("points").style.width = window.innerWidth*0.6;
+        document.getElementById("points").style.fontSize = window.innerWidth/40;
+    }
+}
+
 function webGLStart() {
     //for (var i = 0; i < 20; i++) {
     //    maps[i] = new Image();
@@ -69,12 +83,12 @@ function webGLStart() {
     //        maps[i].src = "img/maps/" + i + ".png";
     //}
     var canvas = document.getElementById("cube-runner");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    if (window.innerWidth < 1000) {
-        document.getElementById("points").style.width = window.innerWidth*0.6;
-        document.getElementById("points").style.fontSize = window.innerWidth/40;
-    }
+    
+    resize();
+    $(window).resize(function() {
+        location.reload();
+    });
+
     if (BrowserDetect.browser != "Chrome") {
         document.getElementById("status").innerHTML = "Please use Google Chrome";
     }
@@ -89,8 +103,7 @@ function webGLStart() {
     
     document.onkeydown = handleKeyDown;
     document.onkeyup = handleKeyUp;
-    document.getElementById("mapimage").style.width = window.innerWidth * 0.3;
-    document.getElementById("mapimage").style.height = window.innerHeight * 0.3;
+
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
             pauseMusic();
@@ -106,7 +119,7 @@ function isPaused() {};
 
 function isDead() {
     document.getElementById("menu").style.display = "block";
-    document.getElementById("status").innerHTML = "Game Over";
+    document.getElementById("status").innerHTML = "Game Over</br>Score: " + Math.ceil(zcount);
     document.getElementById("points").style.display = "none";
     document.getElementById("mapimage").style.display = "none";
     document.getElementById("footer").style.display = "block";
@@ -114,12 +127,8 @@ function isDead() {
     document.getElementById("play_button").addEventListener('click', function (event) {
             event.preventDefault();
             document.getElementById("status").innerHTML = "Analyzing music and generating blocks...";
-            pushRestart();
-            if (alive) {
-                pause = !pause;
-                if (pause == true)
-                    isPaused();
-            } else {
+                pushRestart();
+                pause = false;
                 pitch = 0;
                 pitchRate = 0;
                 yaw = 0;
@@ -161,7 +170,6 @@ function isDead() {
                 lastTime = 0;
                 fillXZ();
                 //pushRestart();
-            }
         });
 };
 
