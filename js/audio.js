@@ -27,7 +27,7 @@ var mainsong;
 
 function loadMain() {
     // Load asynchronously
-    var url = "audio/thisiswhatitfeelslike.mp3";
+    var url = "audio/thisiswhatitfeelslike.ogg";
 
     var request = new XMLHttpRequest();
     request.open("GET", url, true);
@@ -83,7 +83,7 @@ function initAudio() {
 
 function loadmusic() {
     // Load the sample buffer for the audio source
-    loadSample("audio/atmosphere.mp3");
+    loadSample("audio/atmosphere.ogg");
 }
 
 // #####################
