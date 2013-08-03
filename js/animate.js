@@ -128,12 +128,12 @@ function map() {
                 total = data.resourceSets[0].estimatedTotal;
                 //console.log(data);
                 if (total < 6)
-                    difficulty = 30;
+                    difficulty = 20;
                 else
-                    difficulty = total * 5;
+                    difficulty = total * 4;
 
                 if (difficulty > 10) {
-                    difficulty = 60;
+                    difficulty = 50;
                 }
 
                 //console.log("total: "+total + " difficulty: " + difficulty);

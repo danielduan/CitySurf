@@ -38,6 +38,7 @@ var dropDistance = 20;
 
     function drawCubes(mv) {
         for (var i = 0; i < Z.length; i++) {
+            if (Z[i] < 0) {
             mat4.identity(mv);
             Z[i] += mph;
             var extra = mph;
@@ -111,7 +112,7 @@ var dropDistance = 20;
             gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer);
             setMatrixUniforms();
             gl.drawElements(gl.TRIANGLES, cubeVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
-
+        }
         }
         /*
         var avgSpectrum = 0;
