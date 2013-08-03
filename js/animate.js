@@ -130,10 +130,10 @@ function map() {
                 if (total < 6)
                     difficulty = 30;
                 else
-                    difficulty = 30 + (total - 6) * 5;
+                    difficulty = total * 5;
 
                 if (difficulty > 10) {
-                    difficulty = 80;
+                    difficulty = 60;
                 }
 
                 //console.log("total: "+total + " difficulty: " + difficulty);
