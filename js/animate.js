@@ -73,8 +73,9 @@ function tick() {
     requestAnimFrame(tick);
     handleKeys();
     count += 1;
-    if (count % 300 == 0)
+    if (count % 600 == 0) {
         map();
+    }
     //map();
     if (!pause) {
         //map();
