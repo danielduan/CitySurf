@@ -88,8 +88,8 @@
         <span id="status">Loading..</span></br>
     </p>
     <p>
-         Avoid cubes by using left and right arrow keys<br>
-         Leap Motion: move hand left and right<br>
+         Avoid hitting cubes by moving with left and right arrow keys<br>
+         Leap Motion: hover hand over Leap and move left or right<br>
         <br>
          Made by <a href="http://www.linkedin.com/profile/view?id=163719095">Ben Lin</a>, <a href="http://www.danielduan.net">Daniel Duan</a>,
         and <a href="http://www.linkedin.com/profile/view?id=118833734">Elison Chen</a> <br>and won <a href="http://hackforla.challengepost.com/submissions/15828-citysurf">best civic game or social app</a> at <a href="http://hackforla.challengepost.com/">Hack for LA</a>.
