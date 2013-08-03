@@ -132,7 +132,7 @@ function map() {
                 else
                     difficulty = total * 4;
 
-                if (difficulty > 10) {
+                if (total > 10) {
                     difficulty = 50;
                 }
 
